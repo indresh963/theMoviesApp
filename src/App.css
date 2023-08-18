@@ -1,38 +1,133 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+*{
+    box-sizing:border-box;
+    padding:0;
+    margin:0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body{
+    background-color: var(--body-color);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+:root{
+    /* font-color  */
+    --over-primary: #fff;
+    --buttons: #0516ba;
+    --primary: #36547e;
+    --link: #202124;
+    --heading: #1c1d1d;
+    --body-color: #eceff5;
+    --less-imp: #abb1ba;
+    --paragraph: #173c6c;
+    --light-bg: #b6c7de;
+
+    /* font-family */
+    --font:'Roboto', sans-serif;
+
+    /* font-size  */
+    --font-base:1rem;
+    --font-lg:1.25rem;
+    --font-xlg:1.5rem;
+    --font-sm:0.8rem;
+    --font-xsm:0.7rem;
+
+    /* radius  */
+
+    --br-lg:12px;
+    --br-base:8px;
+    --br-sm:4px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+/* custom css  */
+
+h1{
+    font-size: var(--font-xlg);
+    font-weight: 600;
+    color:var(--heading);
+    text-transform: capitalize;
+    letter-spacing: 1.5px;
+    line-height: 2rem;
 }
 
-.App-link {
-  color: #61dafb;
+h2{
+    font-size: var(--font-lg);
+    font-weight: 600;
+    color:var(--heading);
+    text-transform: capitalize;
+    line-height: 1.5rem;
+    letter-spacing: 1.5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h3{
+    font-size: var(--font-sm);
+    font-weight: 500;
+    color:var(--paragraph);
+    text-transform: capitalize;
+    line-height: 0.9rem;
 }
+p{
+    font-size: var(--font-base);
+    font-weight: 400;
+    color:var(--paragraph);
+    letter-spacing: 0.8px;
+}
+
+input{
+    color:var(--primary) !important;
+    font-size: var(--font-sm) !important;
+    font-weight: 500 !important;
+}
+
+.btn-close:focus{
+    box-shadow: unset;
+    border:unset;
+}
+
+/* custom css  */
+
+/* dark theme colors */
+
+/* [app-theme='dark']{
+    --extra-light-bg:#3f3d3d;
+    --light-bg:#2b2929;
+    --dark-bg:#201f1f;
+    --text:rgb(231, 223, 223);
+    --label:rgb(202, 200, 200);
+    --disabled:rgb(165, 160, 160);
+} */
+
+/* dark theme colors */
+
+/* Loader */
+
+span.load-strip{
+    width:0.3rem;
+    height: 1.3rem;
+    background-color:rgb(124, 233, 22);
+    border-radius:50rem;
+    opacity:0.5;
+    animation: load 1500ms infinite linear;
+}
+
+span.load-strip:nth-child(even){
+    height: 2.2rem;
+}
+
+span.load-strip:nth-child(3){
+    height: 3.1rem;
+}
+
+@keyframes load {
+    25%{
+        scale: 1 1.5;
+        opacity: 1;
+    }
+
+    50%{
+        scale: 1;
+    }
+}
+
+/* loader */
