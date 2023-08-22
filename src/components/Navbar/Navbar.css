@@ -1,6 +1,6 @@
 nav {
   background-color: var(--primary);
-  font-weight: 600;
+  font-weight: 500;
   color: var(--over-primary);
   font-size: var(--font-base);
 }
@@ -14,7 +14,7 @@ nav button {
   background-color: transparent;
   box-shadow: unset;
   color: var(--over-primary);
-  font-weight: 600;
+  font-weight: 500;
   font-size: var(--font-base);
   letter-spacing: 1px;
 }
@@ -67,14 +67,14 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 @media screen and (max-width: 768px) {
-  i {
+  i.fa-magnifying-glass, i.fa-bars {
     color: var(--over-primary);
     font-size: var(--font-base);
   }
 
   .offcanvas .link {
     color: var(--primary);
-    font-weight: 600;
+    font-weight: 500;
   }
 
   .offcanvas .nav .nav {

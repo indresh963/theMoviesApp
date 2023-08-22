@@ -7,7 +7,7 @@ function OnShow() {
         <button
           type="button"
           data-bs-toggle="dropdown"
-          className="link nav-link dropdown-toggle"
+          className="link nav-link d-flex align-items-center dropdown-toggle"
         >
           Movies
         </button>
@@ -30,7 +30,7 @@ function OnShow() {
         <button
           type="button"
           data-bs-toggle="dropdown"
-          className=" link dropdown-toggle nav-link"
+          className=" link dropdown-toggle nav-link d-flex align-items-center"
         >
           TV shows
         </button>

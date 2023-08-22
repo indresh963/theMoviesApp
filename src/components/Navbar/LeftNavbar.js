@@ -4,7 +4,7 @@ function LeftNavbar({ hide }) {
   return (
     <div className="d-inline-flex justify-content-around gap-4 align-items-center flex-md-fill">
       <button type="button">
-        <i class="fa-solid fa-right-to-bracket"></i>
+        <i className="fa-solid fa-right-to-bracket"></i>
       </button>
       {hide ? (
         <>

@@ -1,15 +1,8 @@
 import React from 'react'
-
+import { WelcomeSection } from '.'
 function Feed() {
   return (
-    <div>
-      <p>
-      lkjsalfjdlsjfdjrfiowejfklsdvjosdijfiodjfijsdf
-        dfjkosdjfoijefiojsdkljcijvmiaejfjslkvcjiojioerj
-        fldskjfikdsjf kjiokjfoisdjk ojfiejdlrfjweioufewjflk  iooehfioweiiorewr
-        fjoi ruiowej roiiujewiorjoweij oewijriowejroewjfi ewijroweijri
-      </p>
-    </div>
+    <WelcomeSection />
   )
 }
 
