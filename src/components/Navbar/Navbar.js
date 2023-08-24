@@ -5,14 +5,13 @@ import RightNavbar from "./RightNavbar";
 import LeftNavbar from "./LeftNavbar";
 function Navbar() {
   const [hide, setHide] = useState(window.innerWidth < 768);
-  window.onresize = () => {
+  window.addEventListener('resize',() => {
     if (window.innerWidth > 768 && hide) {
       setHide(false);
     } else if (window.innerWidth < 768 && !hide) {
       setHide(true);
     }
-  };
-
+  })
   return (
     <>
       <nav>

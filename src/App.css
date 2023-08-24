@@ -7,10 +7,6 @@
     font-family: var(--font);
 }
 
-body{
-    background-color: var(--body-color);
-}
-
 :root{
     /* font-color  */
     --over-primary: #fff;
@@ -27,6 +23,7 @@ body{
 
     /* font-size  */
     --font-base:1.25rem;
+    --font-lg-base:1.35rem;
     --font-lg:1.5rem;
     --font-xlg:1.75rem;
     --font-sm:1rem;
@@ -42,6 +39,20 @@ body{
 
 
 /* custom css  */
+
+::-webkit-scrollbar{
+    width:0.625rem;
+    height: 0.625rem;
+}
+
+::-webkit-scrollbar-track{
+    background-color: var(--over-primary);
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: var(--less-imp);
+    border-radius: 50rem;
+}
 
 h1{
     font-size: var(--font-xlg);
@@ -63,11 +74,11 @@ h2{
 
 h3{
     font-size: var(--font-base);
-    font-weight: 400;
+    font-weight: 600;
     color:var(--heading);
     text-transform: capitalize;
-    line-height: 0.9rem;
-    margin:0;
+    margin-bottom:0.3rem;
+    line-height: 1.2rem;
     letter-spacing: 0.8px;
     word-wrap: break-word;
 }
@@ -150,15 +161,8 @@ span.load-strip:nth-child(3){
 
 /* carousel  */
 
-/* carousel  */
 
-.carousel-item img, .carousel-item, .carousel-inner, .carousel{
-    border-radius: var(--br-lg);
-}
 
-.carousel{
-    box-shadow: 0 0 5px var(--primary);
-}
 .carousel-indicators [data-bs-target] {
     width: 0.7vw;
     height: 0.7vw;
@@ -181,10 +185,6 @@ span.load-strip:nth-child(3){
     margin:0 2% 0 0;
   }
 
-  /* .carousel-item img{
-    position:relative;
-    z-index: 0;
-  } */
   .caption{
     position: absolute;
     bottom: 0;
@@ -213,7 +213,7 @@ span.load-strip:nth-child(3){
     line-height: 0.8rem;
 }
 
-.caption h2,h3,.lang,h4{
+.caption h2,.caption h3,.caption .lang, .caption h4{
     color:var(--over-primary);
 }
 
@@ -230,15 +230,55 @@ span.load-strip:nth-child(3){
 /* badge */
 #trending.card{
     border:unset;
-    box-shadow: 0 0 7px gray ;
-    border-radius: var(--br-base);
+    padding:0;
+
 }
 #trending .card-header{
     background-color: transparent;
     border-bottom: unset;
-    margin-top:0.7rem;
+    margin-top:1rem;
 }
 
+.trending-card-body, .trending-card-body img, #trending-card .card-body{
+    border-radius: var(--br-base);
+}
+.trending-card-body{
+    border:unset;
+    flex-basis: min-content;
+}
+
+.trending-card-body .card-body{
+    padding:0;
+}
+.trending-card-body .card-footer{
+    padding-left:0;
+    background-color: transparent;
+    border:unset;
+    flex-basis: min-content;
+}
+
+#trending_section{
+    overflow-x: auto;
+}
+
+.trending-img{
+    position:relative;
+}
+
+.media-type{
+    position: absolute;
+    top:0;
+    right:0;
+    border-top-right-radius: var(--br-base);
+    border-bottom-left-radius: var(--br-base);
+    padding:0.2rem 0.3rem;
+    background-color: var(--primary);
+    color: var(--over-primary);
+    font-size: var(--font-xsm);
+    font-weight: 600;
+    letter-spacing: 0.9px;
+    text-transform: capitalize;
+}
 .cbadge{
     background-color: var(--primary);
     display: inline-block;
@@ -294,10 +334,10 @@ span.load-strip:nth-child(3){
 }
 
 .btn-container label{
-    padding:0.1rem 0.18rem;
+    padding:0.05rem 0.5rem;
     color:var(--link);
     font-weight: 400;
-    font-size: var(--font-sm);
+    font-size: var(--font-base);
     display: block;
     border-radius: 50rem;
     cursor:pointer;
@@ -312,10 +352,5 @@ span.load-strip:nth-child(3){
 /* badge */
 
 /* trending_container */
-
-#trending_section .card-body{
-    padding:0;
-}
-
 
 

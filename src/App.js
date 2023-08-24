@@ -1,4 +1,5 @@
 import "./App.css";
+import "./ResponsiveApp.css";
 import { Fragment } from "react";
 import { Navbar } from "./components/index";
 import { Routes, Route } from "react-router-dom";

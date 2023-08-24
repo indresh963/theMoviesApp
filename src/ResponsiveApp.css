@@ -1,0 +1,13 @@
+@media screen and (max-width:768px){
+    :root{
+        --font-base:1rem;
+        --font-lg-base:1.1rem;
+        --font-lg:1.25rem;
+        --font-xlg:1.5rem;
+        --font-sm:0.75rem;
+        --font-xsm:0.6rem;
+        --font-xxsm:0.45rem;
+    }
+
+    .cbadge,.cbadge::after,.cbadge::before{ height: 1.55rem; }
+}
