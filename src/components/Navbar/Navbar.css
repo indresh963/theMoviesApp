@@ -67,7 +67,8 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 @media screen and (max-width: 768px) {
-  i.fa-magnifying-glass, i.fa-bars {
+  i.fa-magnifying-glass,
+  i.fa-bars {
     color: var(--over-primary);
     font-size: var(--font-base);
   }

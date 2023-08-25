@@ -1,46 +1,47 @@
-@media screen and (max-width:996px){
-    .carousel-item{
-        height:400px
-    }
+@media screen and (max-width: 996px) {
+  .carousel-item {
+    height: 400px;
+  }
 }
 
-@media screen and (max-width:768px){
-    :root{
-        --font-base:1rem;
-        --font-lg-base:1.1rem;
-        --font-lg:1.25rem;
-        --font-xlg:1.5rem;
-        --font-sm:0.75rem;
-        --font-xsm:0.6rem;
-        --font-xxsm:0.45rem;
-        --font-carousel-heading:2.5rem;
-        --font-carousel-subHeading:1.2rem;
-    }
+@media screen and (max-width: 768px) {
+  :root {
+    --font-base: 1rem;
+    --font-lg-base: 1.1rem;
+    --font-lg: 1.25rem;
+    --font-xlg: 1.5rem;
+    --font-sm: 0.75rem;
+    --font-xsm: 0.6rem;
+    --font-xxsm: 0.45rem;
+    --font-carousel-heading: 2.5rem;
+    --font-carousel-subHeading: 1.2rem;
+  }
 
-    .cbadge,.cbadge::after,.cbadge::before{ height: 1.55rem; }
+  .cbadge,
+  .cbadge::after,
+  .cbadge::before {
+    height: 1.55rem;
+  }
 
-    .carousel-item{
-        height:370px
-    }
+  .carousel-item {
+    height: 370px;
+  }
 }
 
-
-@media screen and (max-width:576px){
-    .caption{
-       margin:0 1.8rem 1.8rem;
-
-    }
+@media screen and (max-width: 576px) {
+  .caption {
+    margin: 0 1.8rem 1.8rem;
+  }
 }
-@media  screen and (min-width:768px) {
-    nav {
-        background-color: transparent !important;
-        position: absolute;
-        z-index: 1;
-        width:100%;
-      }
-    
-    .carousel{
-        z-index: 0;
-    }
-}
+@media screen and (min-width: 768px) {
+  nav {
+    background-color: transparent !important;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+  }
 
+  .carousel {
+    z-index: 0;
+  }
+}

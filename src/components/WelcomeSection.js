@@ -4,11 +4,14 @@ function WelcomeSection() {
   const [carouselItems, setCarouselItems] = useState([]);
   const [trendingTime, setTrendingTime] = useState("day");
   const [trendingContent, setTrendingContent] = useState([]);
-  const [posterSize, setPosterSize] = useState(window.innerWidth > 768 ? 'w154' : 'w92');
-   window.onresize = ()=>{
-    if(window.innerWidth > 768 && posterSize !== 'w154') setPosterSize('w154')
-    else if(window.innerWidth < 768 && posterSize === 'w154') setPosterSize('w92')
-   }
+  const [posterSize, setPosterSize] = useState(
+    window.innerWidth > 768 ? "w154" : "w92"
+  );
+  window.onresize = () => {
+    if (window.innerWidth > 768 && posterSize !== "w154") setPosterSize("w154");
+    else if (window.innerWidth < 768 && posterSize === "w154")
+      setPosterSize("w92");
+  };
   useEffect(() => {
     Fetch("movie/now_playing", 1).then(({ results }) => {
       const arr = results.slice(0, 10);
@@ -54,7 +57,9 @@ function WelcomeSection() {
                 <div
                   key={val.id}
                   className={
-                    ind === 0 ? " carousel-item active d-flex flex-column justify-content-end" : "carousel-item d-flex flex-column justify-content-end"
+                    ind === 0
+                      ? " carousel-item active d-flex flex-column justify-content-end"
+                      : "carousel-item d-flex flex-column justify-content-end"
                   }
                   data-bs-interval="4000"
                   style={{
@@ -67,19 +72,23 @@ function WelcomeSection() {
                   <div className="caption d-flex flex-column justify-self-end gap-md-3  gap-2">
                     <h3>#Now Playing</h3>
                     <h1>{val.title}</h1>
-                    <p>{
-                      window.innerWidth > 768 ? val.overview : val.overview.split(' ').slice(0,22).join(' ')
-                      }</p>
+                    <p>
+                      {window.innerWidth > 768
+                        ? val.overview
+                        : val.overview.split(" ").slice(0, 22).join(" ")}
+                    </p>
                     <ul className="nav gap-3 align-items-center">
                       <li className="nav-item vote_count">
-                      <i className="fa-solid fa-star me-2"></i>
-                           {val.vote_average}
+                        <i className="fa-solid fa-star me-2"></i>
+                        {val.vote_average}
                       </li>
                       <li className="lang">{val.original_language}</li>
                     </ul>
                     <div>
-                    <button type='button' className="main-btn"><i className="fa-solid fa-circle-info me-2 align-baseline"></i>See Details</button>
-
+                      <button type="button" className="main-btn">
+                        <i className="fa-solid fa-circle-info me-2 align-baseline"></i>
+                        See Details
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -115,12 +124,12 @@ function WelcomeSection() {
               </div>
             </div>
           </div>
-          <div
-            className="card-body d-flex gap-3"
-            id="trending_section"
-          >
+          <div className="card-body d-flex gap-3" id="trending_section">
             {trendingContent.map((val) => (
-              <div key={val.id} className="card flex-shrink-0 trending-card-body">
+              <div
+                key={val.id}
+                className="card flex-shrink-0 trending-card-body"
+              >
                 <div className="card-body flex-grow-0">
                   <img
                     src={`${config}/${posterSize}/${val.poster_path}`}
