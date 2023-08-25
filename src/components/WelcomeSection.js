@@ -24,7 +24,7 @@ function WelcomeSection() {
   function setTrends(e) {
     setTrendingTime(e.target.value);
   }
-  console.log(trendingContent);
+  console.log(carouselItems);
   const { config, Badge } = util();
   return (
     <div>
@@ -54,7 +54,7 @@ function WelcomeSection() {
                 <div
                   key={val.id}
                   className={
-                    ind === 0 ? " carousel-item active" : "carousel-item"
+                    ind === 0 ? " carousel-item active d-flex flex-column justify-content-end" : "carousel-item d-flex flex-column justify-content-end"
                   }
                   data-bs-interval="4000"
                   style={{
@@ -62,21 +62,25 @@ function WelcomeSection() {
                     backgroundSize: "cover",
                     backgroundRepeat: "no-repeat",
                     backgroundPosition: "center",
-                    height: "500px",
                   }}
                 >
-                  <div className="caption d-flex flex-column gap-1">
-                    <h1>#Now Playing</h1>
-                    <h2>{val.title}</h2>
+                  <div className="caption d-flex flex-column justify-self-end gap-md-3  gap-2">
+                    <h3>#Now Playing</h3>
+                    <h1>{val.title}</h1>
+                    <p>{
+                      window.innerWidth > 768 ? val.overview : val.overview.split(' ').slice(0,22).join(' ')
+                      }</p>
                     <ul className="nav gap-3 align-items-center">
-                      <li className="nav-item">
-                        <h3>
-                          <i className="fa-solid fa-star"></i>{" "}
-                          {val.vote_average}
-                        </h3>
+                      <li className="nav-item vote_count">
+                      <i className="fa-solid fa-star me-2"></i>
+                           {val.vote_average}
                       </li>
                       <li className="lang">{val.original_language}</li>
                     </ul>
+                    <div>
+                    <button type='button' className="main-btn"><i className="fa-solid fa-circle-info me-2 align-baseline"></i>See Details</button>
+
+                    </div>
                   </div>
                 </div>
               )

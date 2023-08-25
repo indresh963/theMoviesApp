@@ -15,7 +15,7 @@ function Navbar() {
   return (
     <>
       <nav>
-        <div className="container-fluid py-2 px-sm-5 px-2 d-flex gap-3">
+        <div className="container-fluid py-1 px-sm-5 px-2 d-flex gap-3">
           <RightNavbar hide={hide} />
           <LeftNavbar hide={hide} />
         </div>
