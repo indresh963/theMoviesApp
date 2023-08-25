@@ -8,3 +8,5 @@ export { default as Peoples } from './Peoples.js'
 export { default as  WelcomeSection} from './WelcomeSection.js'
 export { default as  Fetch} from '../utils/FetchFromAPI.js'
 export { default as  util} from '../utils/utils.js'
+export { default as  MediaInfo} from './MediaInfo.js'
+

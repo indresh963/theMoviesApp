@@ -28,16 +28,16 @@ function OnHIde() {
               id="movies"
             >
               <li className="nav-item" data-bs-dismiss='offcanvas' role='button'>
-                <Link  className='nav-link' to="movies/popular">Popular</Link>
+                <Link  className='nav-link' to="/movies/popular">Popular</Link>
               </li>
               <li data-bs-dismiss='offcanvas' role='button' className="nav-item">
-                <Link className='nav-link' to="movies/nowPlaying">Now Playing</Link>
+                <Link className='nav-link' to="/movies/nowPlaying">Now Playing</Link>
               </li>
               <li data-bs-dismiss='offcanvas' role='button' className="nav-item">
-                <Link className='nav-link' to="movies/topRated">Top Rated</Link>
+                <Link className='nav-link' to="/movies/topRated">Top Rated</Link>
               </li>
               <li data-bs-dismiss='offcanvas' role='button' className="nav-item">
-                <Link className='nav-link' to="movies/upcoming">Upcoming</Link>
+                <Link className='nav-link' to="/movies/upcoming">Upcoming</Link>
               </li>
             </ul>
           </li>
@@ -56,13 +56,13 @@ function OnHIde() {
               id="tvshows"
             >
               <li data-bs-dismiss='offcanvas' role='button' className="nav-item">
-                <Link className='nav-link' to="tvShows/popular">Popular</Link>
+                <Link className='nav-link' to="/tvShows/popular">Popular</Link>
               </li>
               <li data-bs-dismiss='offcanvas' role='button' className="nav-item">
-                <Link className='nav-link' to="tvShows/nowPlaying">Now Playing</Link>
+                <Link className='nav-link' to="/tvShows/nowPlaying">Now Playing</Link>
               </li>
               <li data-bs-dismiss='offcanvas' role='button' className="nav-item">
-                <Link className='nav-link' to="tvShows/topRated">Top Rated</Link>
+                <Link className='nav-link' to="/tvShows/topRated">Top Rated</Link>
               </li>
               <li data-bs-dismiss='offcanvas' role='button' className="nav-item">
                 <Link className='nav-link' to="/tvShows/upcoming">Upcoming</Link>
@@ -70,7 +70,7 @@ function OnHIde() {
             </ul>
           </li>
           <li data-bs-dismiss='offcanvas' role='button' className="nav-item">
-          <Link to='peoples' className="nav-link link">Peoples</Link>
+          <Link to='/peoples' className="nav-link link">Peoples</Link>
           </li>
         </ul>
       </div>

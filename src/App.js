@@ -3,15 +3,16 @@ import "./ResponsiveApp.css";
 import { Fragment } from "react";
 import { Navbar } from "./components/index";
 import { Routes, Route } from "react-router-dom";
-import { CategorySearch, Feed, Peoples } from "./components";
+import { CategorySearch, Feed, Peoples, MediaInfo } from "./components";
 function App() {
   return (
     <Fragment>
       <Navbar />
       <Routes>
         <Route path="/" element={<Feed />} />
-        <Route path=":form/:cat" element={<CategorySearch />} />
-        <Route path="peoples" element={<Peoples />} />
+        <Route path="/:form/:cat" element={<CategorySearch />} />
+        <Route path="/peoples" element={<Peoples />} />
+        <Route path="/:mediaId" element={<MediaInfo />} />
       </Routes>
     </Fragment>
   );

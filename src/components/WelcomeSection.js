@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { MediaInfo } from "./";
 import { Fetch, util } from "./";
 function WelcomeSection() {
   const [carouselItems, setCarouselItems] = useState([]);
@@ -85,10 +87,10 @@ function WelcomeSection() {
                       <li className="lang">{val.original_language}</li>
                     </ul>
                     <div>
-                      <button type="button" className="main-btn">
-                        <i className="fa-solid fa-circle-info me-2 align-baseline"></i>
+                      <Link to={`/${val.id}`} className='main-btn d-inline-block'>
+                      <i className="fa-solid fa-circle-info me-2 align-baseline"></i>
                         See Details
-                      </button>
+                        </Link>
                     </div>
                   </div>
                 </div>
@@ -126,8 +128,8 @@ function WelcomeSection() {
           </div>
           <div className="card-body d-flex gap-3" id="trending_section">
             {trendingContent.map((val) => (
-              <div
-                key={val.id}
+              <Link key={val.id} to={`${val.id}`} element={<MediaInfo />}>
+                <div
                 className="card flex-shrink-0 trending-card-body"
               >
                 <div className="card-body flex-grow-0">
@@ -143,6 +145,7 @@ function WelcomeSection() {
                   <h4>{val.first_air_date ?? val.release_date}</h4>
                 </div>
               </div>
+              </Link>
             ))}
           </div>
         </div>
