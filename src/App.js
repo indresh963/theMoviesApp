@@ -1,9 +1,9 @@
 import "./App.css";
 import "./ResponsiveApp.css";
 import { Fragment } from "react";
-import { Navbar } from "./components/index";
+import {  } from "./components/index";
 import { Routes, Route } from "react-router-dom";
-import { CategorySearch, Feed, Peoples, MediaInfo } from "./components";
+import { CategorySearch, Feed, Peoples, MediaInfo,GenreMedia, Navbar } from "./components";
 function App() {
   return (
     <Fragment>
@@ -13,6 +13,7 @@ function App() {
         <Route path="/:form/:cat" element={<CategorySearch />} />
         <Route path="/peoples" element={<Peoples />} />
         <Route path="/:mediaId" element={<MediaInfo />} />
+        <Route path="/genreMedia/:genre" element={<GenreMedia />} />
       </Routes>
     </Fragment>
   );

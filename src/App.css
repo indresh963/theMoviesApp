@@ -103,7 +103,7 @@ p {
   line-height: 1.4rem;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
@@ -232,8 +232,6 @@ span.load-strip:nth-child(3) {
   height: 475px;
 }
 
-/* carousel  */
-
 .vote_count {
   color: var(--over-primary);
   font-size: var(--font-base);
@@ -276,44 +274,44 @@ span.load-strip:nth-child(3) {
   font-size: var(--font-sm);
 }
 
-/* trending section  */
+/* carousel  */
 
-/* badge */
-#trending.card {
+/* media section  */
+.media.card {
   border: unset;
   padding: 0;
 }
-#trending .card-header {
+.media .card-header {
   background-color: transparent;
   border-bottom: unset;
   margin-top: 1rem;
 }
 
-.trending-card-body,
-.trending-card-body img,
-#trending-card .card-body {
+.media-card-body,
+.media-card-body img,
+.media-card .card-body {
   border-radius: var(--br-base);
 }
-.trending-card-body {
+.media-card-body {
   border: unset;
   flex-basis: min-content;
 }
 
-.trending-card-body .card-body {
+.media-card-body .card-body {
   padding: 0;
 }
-.trending-card-body .card-footer {
+.media-card-body .card-footer {
   padding-left: 0;
   background-color: transparent;
   border: unset;
   flex-basis: min-content;
 }
 
-#trending_section {
+.media_section {
   overflow-x: auto;
 }
 
-.trending-img {
+.media-img {
   position: relative;
 }
 
@@ -331,11 +329,15 @@ span.load-strip:nth-child(3) {
   letter-spacing: 0.9px;
   text-transform: capitalize;
 }
+
+/* media section  */
+
+/* badge  */
 .cbadge {
   background-color: var(--primary);
   display: inline-flex;
   align-items: center;
-  font-size:var(--font-lg-base);
+  font-size: var(--font-lg-base);
   font-weight: 500;
   color: var(--over-primary);
   position: relative;
@@ -402,6 +404,30 @@ span.load-strip:nth-child(3) {
 }
 /* button-containers  */
 
-/* badge */
+/* genre-body */
 
-/* trending_container */
+.genre-body {
+  display: flex;
+  justify-content: space-between;
+  overflow-x: scroll;
+  gap: 1rem;
+}
+
+.genre-body .card-body {
+  padding: 0;
+  border: 0;
+}
+.genre-body .card-footer {
+  background-color: transparent;
+  text-align: center;
+  border: 0;
+  padding: 0;
+  padding-top: 0.5rem;
+}
+.genre-body .card {
+  border: 0;
+  /* box-shadow: 0 0 12px #c2bbbb; */
+  padding: 0.4rem;
+  width:90px
+}
+/* genre-body */

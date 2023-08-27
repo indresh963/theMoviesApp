@@ -1,19 +1,16 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { MediaInfo } from "./";
-import { Fetch, util } from "./";
+import { Fetch, util, DisplayMedia, Genres } from "./";
 function WelcomeSection() {
   const [carouselItems, setCarouselItems] = useState([]);
   const [trendingTime, setTrendingTime] = useState("day");
   const [trendingContent, setTrendingContent] = useState([]);
+  const [popularAnime, setPopularAnime] = useState([]);
+  const [animeMediaType, setAnimeMediaType] = useState("tv");
   const [posterSize, setPosterSize] = useState(
     window.innerWidth > 768 ? "w154" : "w92"
   );
-  window.onresize = () => {
-    if (window.innerWidth > 768 && posterSize !== "w154") setPosterSize("w154");
-    else if (window.innerWidth < 768 && posterSize === "w154")
-      setPosterSize("w92");
-  };
+
   useEffect(() => {
     Fetch("movie/now_playing", 1).then(({ results }) => {
       const arr = results.slice(0, 10);
@@ -26,14 +23,28 @@ function WelcomeSection() {
       setTrendingContent(results);
     });
   }, [trendingTime]);
-  function setTrends(e) {
-    setTrendingTime(e.target.value);
-  }
-  console.log(carouselItems);
-  const { config, Badge } = util();
+
+  useEffect(() => {
+    Fetch(
+      `discover/${animeMediaType}`,
+      1,
+      "GET",
+      "include_adult=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=16&vote_count.gte=1000&with_origin_country=JP"
+    ).then(({ results }) => {
+      setPopularAnime(results);
+    });
+  }, [animeMediaType]);
+  
+  window.onresize = () => {
+    if (window.innerWidth > 768 && posterSize !== "w154") setPosterSize("w154");
+    else if (window.innerWidth < 768 && posterSize === "w154")
+      setPosterSize("w92");
+  };
+  console.log(trendingContent);
+  const { config } = util();
   return (
-    <div>
-      <div
+    <main>
+      <section
         id="ongoing"
         className="carousel slide carousel-fade"
         data-bs-ride="carousel"
@@ -87,70 +98,46 @@ function WelcomeSection() {
                       <li className="lang">{val.original_language}</li>
                     </ul>
                     <div>
-                      <Link to={`/${val.id}`} className='main-btn d-inline-block'>
-                      <i className="fa-solid fa-circle-info me-2 align-baseline"></i>
+                      <Link
+                        to={`/${val.id}`}
+                        className="main-btn d-inline-block"
+                      >
+                        <i className="fa-solid fa-circle-info me-2 align-baseline"></i>
                         See Details
-                        </Link>
+                      </Link>
                     </div>
                   </div>
                 </div>
               )
           )}
         </div>
-      </div>
-      <div className="my-4">
-        <div className="card" id="trending">
-          <div className="card-header">
-            <div className="d-flex align-items-center justify-content-between">
-              <Badge>Trending</Badge>
-
-              <div className="btn-container">
-                <input
-                  type="radio"
-                  onChange={setTrends}
-                  checked={trendingTime === "day"}
-                  id="today"
-                  value="day"
-                  name="trending"
-                />
-                <label htmlFor="today">Today</label>
-                <input
-                  type="radio"
-                  onChange={setTrends}
-                  checked={trendingTime === "week"}
-                  id="this_week"
-                  value="week"
-                  name="trending"
-                />
-                <label htmlFor="this_week">This Week</label>
-              </div>
-            </div>
-          </div>
-          <div className="card-body d-flex gap-3" id="trending_section">
-            {trendingContent.map((val) => (
-              <Link key={val.id} to={`${val.id}`} element={<MediaInfo />}>
-                <div
-                className="card flex-shrink-0 trending-card-body"
-              >
-                <div className="card-body flex-grow-0">
-                  <img
-                    src={`${config}/${posterSize}/${val.poster_path}`}
-                    alt="slide_for_trending"
-                    className="trending-img"
-                  />
-                  <span className="media-type">{val.media_type}</span>
-                </div>
-                <div className="card-footer">
-                  <h3>{val?.original_title ?? val?.name}</h3>
-                  <h4>{val.first_air_date ?? val.release_date}</h4>
-                </div>
-              </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
+      </section>
+      <DisplayMedia
+        data={trendingContent}
+        heading="Trending"
+        filterOptions={[
+          "trending",
+          { id: "day", value: "day", filterName: "Today" },
+          { id: "week", value: "week", filterName: "This Week" },
+        ]}
+        setFilter={setTrendingTime}
+        currentFilter={trendingTime}
+        posterSize={posterSize}
+      />
+      <Genres />
+      <DisplayMedia
+        data={popularAnime}
+        heading="Popular Anime"
+        filterOptions={[
+          "popular-anime",
+          { id: "tv", value: "tv", filterName: "TV" },
+          { id: "movie", value: "movie", filterName: "Movies" },
+        ]}
+        setFilter={setAnimeMediaType}
+        currentFilter={animeMediaType}
+        posterSize={posterSize}
+      />
+    </main>
   );
 }
 
