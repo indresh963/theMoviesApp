@@ -6,63 +6,84 @@ function Genres() {
     {
       img: require("../assets/action.png"),
       name: "Action",
-      genre: "action",
+      genreId: 28,
     },
     {
       img: require("../assets/adventure.png"),
       name: "Adventure",
-      genre: "adventure",
+      genreId: 12,
+
     },
     {
       img: require("../assets/anime.png"),
       name: "Animation",
-      genre: "animation",
+      genreId: 16,
     },
     {
       img: require("../assets/comedy.png"),
       name: "Comedy",
-      genre: "comedy",
+      genreId: 35,
+
     },
     {
       img: require("../assets/crime.png"),
       name: "Crime",
-      genre: "crime",
+      genreId: 80,
     },
     {
       img: require("../assets/drama.png"),
       name: "Drama",
-      genre: "drama",
+      genreId: 18,
     },
     {
       img: require("../assets/family.png"),
       name: "Family",
-      genre: "family",
+      genreId: 10751,
     },
     {
       img: require("../assets/horror.png"),
       name: "Horror",
-      genre: "horror",
+      genreId: 27,
     },
     {
       img: require("../assets/romance.png"),
       name: "Romance",
-      genre: "romance",
+      genreId: 10749,
     },
     {
       img: require("../assets/sci-fi.png"),
       name: "Sci-Fi",
-      genre: "sci-fi",
+      genreId: 878,
     },
     {
       img: require("../assets/thriller.png"),
       name: "Thriller",
-      genre: "thriller",
+      genreId: 53,
     },
     {
       img: require("../assets/war.png"),
       name: "War",
-      genre: "war",
+      genreId: 10752,
     },
+    {
+      img: require("../assets/mystery.png"),
+      name: "Mystery",
+      genreId: 9648,
+    },
+    {
+        img: require("../assets/fantasy.png"),
+        name: "Fantasy",
+        genreId: 14,
+      },
+      {
+        img: require("../assets/music.png"),
+        name: "Music",
+        genreId: 10402,
+      },{
+        img: require("../assets/history.png"),
+        name: "History",
+        genreId: 36,
+      },
   ];
 
   const { Badge } = util();
@@ -72,9 +93,9 @@ function Genres() {
         <div className="ms-3">
           <Badge>Genres</Badge>
         </div>
-        <div className="genre-body px-3">
+        <div className="genre-body px-3 pb-4">
           {genres.map((val) => (
-            <Link key={val.genre} to={`/genreMedia/${val.genre}`}>
+            <Link key={val.genre} to={`/genreMedia/${val.genreId}`}>
               <div className="card">
                 <div className="card-body">
                   <img
