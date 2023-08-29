@@ -448,7 +448,8 @@ span.load-strip:nth-child(3) {
 
 .popular-list{
   list-style-type: none;
-  width: 300px;
+flex-basis: 300px;
+flex-shrink: 0;
   border:1px solid var(--light-bg);
   border-radius: var(--br-base);
   padding-left: 0;

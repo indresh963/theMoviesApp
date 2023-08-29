@@ -131,21 +131,21 @@ function WelcomeSection() {
           />
           <MediaTable
             param={
-              "include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_origin_country=KR&vote_count.gte=200"
+              "include_adult=true&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_origin_country=KR&vote_count.gte=200"
             }
             title="K-Drama"
           />
           <MediaTable
             param={
-              "include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&vote_count.gte=2000"
+              "include_adult=true&include_video=false&language=en-US&page=1&sort_by=popularity.desc&vote_average.gte=7.5&first_air_date_year=2023&with_original_language=en"
             }
-            title="Web Series"
+            title="2023 Shows"
           />
           <MediaTable
             param={
-              "include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=16&with_origin_country=JP&vote_count.gte=2000"
+              "include_adult=false&include_video=false&language=en-US&page=1&sort_by=vote_average.desc&with_origin_country=IN&vote_count.gte=50"
             }
-            title="Hindi"
+            title="Hindi Shows"
           />
         </div>
       </section>

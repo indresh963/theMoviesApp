@@ -17,7 +17,7 @@ function MediaTable({param,title}) {
   console.log(listContent);
 
   return (
-    <ul className="popular-list">
+    <ul className="popular-list d-flex flex-column justify-content-between">
           <li>{title}</li>
           {
             listContent.map( val => (
