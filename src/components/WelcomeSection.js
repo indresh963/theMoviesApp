@@ -1,46 +1,42 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Fetch, util, DisplayMedia, Genres } from "./";
+import { Fetch, util, DisplayMedia, Genres, MediaTable } from "./";
 function WelcomeSection() {
   const [carouselItems, setCarouselItems] = useState([]);
   const [trendingTime, setTrendingTime] = useState("day");
   const [trendingContent, setTrendingContent] = useState([]);
-  const [popularAnime, setPopularAnime] = useState([]);
-  const [animeMediaType, setAnimeMediaType] = useState("tv");
   const [posterSize, setPosterSize] = useState(
     window.innerWidth > 768 ? "w154" : "w92"
   );
 
   useEffect(() => {
-    Fetch("movie/now_playing", 1).then(({ results }) => {
+    Fetch(
+      "movie/now_playing",
+      1,
+      "GET",
+      "include_adult=false&include_video=false&language=en-US&page=1"
+    ).then(({ results }) => {
       const arr = results.slice(0, 10);
       setCarouselItems(arr.filter((val) => val.backdrop_path !== null));
     });
   }, []);
 
   useEffect(() => {
-    Fetch(`trending/all/${trendingTime}`, 1).then(({ results }) => {
+    Fetch(
+      `trending/all/${trendingTime}`,
+      1,
+      "GET",
+      "include_adult=false&include_video=false&language=en-US&page=1"
+    ).then(({ results }) => {
       setTrendingContent(results);
     });
   }, [trendingTime]);
 
-  useEffect(() => {
-    Fetch(
-      `discover/${animeMediaType}`,
-      1,
-      "GET",
-      "include_adult=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=16&vote_count.gte=1000&with_origin_country=JP"
-    ).then(({ results }) => {
-      setPopularAnime(results);
-    });
-  }, [animeMediaType]);
-  
   window.onresize = () => {
     if (window.innerWidth > 768 && posterSize !== "w154") setPosterSize("w154");
     else if (window.innerWidth < 768 && posterSize === "w154")
       setPosterSize("w92");
   };
-  console.log(trendingContent);
   const { config } = util();
   return (
     <main>
@@ -125,18 +121,34 @@ function WelcomeSection() {
         posterSize={posterSize}
       />
       <Genres />
-      <DisplayMedia
-        data={popularAnime}
-        heading="Popular Anime"
-        filterOptions={[
-          "popular-anime",
-          { id: "tv", value: "tv", filterName: "TV" },
-          { id: "movie", value: "movie", filterName: "Movies" },
-        ]}
-        setFilter={setAnimeMediaType}
-        currentFilter={animeMediaType}
-        posterSize={posterSize}
-      />
+      <section className="my-4">
+        <div className="d-flex overflow-x-scroll gap-4 p-4">
+          <MediaTable
+            param={
+              "include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=16&with_origin_country=JP&vote_count.gte=2000"
+            }
+            title="Anime"
+          />
+          <MediaTable
+            param={
+              "include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_origin_country=KR&vote_count.gte=200"
+            }
+            title="K-Drama"
+          />
+          <MediaTable
+            param={
+              "include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&vote_count.gte=2000"
+            }
+            title="Web Series"
+          />
+          <MediaTable
+            param={
+              "include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=16&with_origin_country=JP&vote_count.gte=2000"
+            }
+            title="Hindi"
+          />
+        </div>
+      </section>
     </main>
   );
 }

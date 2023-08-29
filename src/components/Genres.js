@@ -95,7 +95,7 @@ function Genres() {
         </div>
         <div className="genre-body px-3 pb-4">
           {genres.map((val) => (
-            <Link key={val.genre} to={`/genreMedia/${val.genreId}`}>
+            <Link key={val.genreId} to={`/genreMedia/${val.genreId}`}>
               <div className="card">
                 <div className="card-body">
                   <img
