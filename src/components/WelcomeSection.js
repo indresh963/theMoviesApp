@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Fetch, util, DisplayMedia, Genres, MediaTable } from "./";
+import { Fetch, util, DisplayMedia, Genres, MediaTable, Trailer } from "./";
 function WelcomeSection() {
   const [carouselItems, setCarouselItems] = useState([]);
   const [trendingTime, setTrendingTime] = useState("day");
   const [trendingContent, setTrendingContent] = useState([]);
-  const [posterSize, setPosterSize] = useState(
-    window.innerWidth > 768 ? "w154" : "w92"
-  );
+  const [ottPlatform, setOttPlatform] = useState("8");
+  const [ottPopular, setOttPopular] = useState([]);
+  const [upcomingMovieTrailers, setupcomingMovieTrailers] = useState([])
 
   useEffect(() => {
     Fetch(
@@ -32,14 +32,31 @@ function WelcomeSection() {
     });
   }, [trendingTime]);
 
-  window.onresize = () => {
-    if (window.innerWidth > 768 && posterSize !== "w154") setPosterSize("w154");
-    else if (window.innerWidth < 768 && posterSize === "w154")
-      setPosterSize("w92");
-  };
+  useEffect(() => {
+    Fetch(
+      `discover/tv/`,
+      1,
+      "GET",
+      `include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&vote_average.gte=7&watch_region=IN&with_watch_providers=${ottPlatform}&with_original_language=en`
+    ).then(({ results }) => {
+      setOttPopular(results);
+    });
+  }, [ottPlatform]);
+
+  useEffect(() => {
+    Fetch(
+      `discover/movie`,
+      1,
+      "GET",
+      "include_adult=false&include_video=true&language=en-US&page=1&primary_release_date.gte=2023-09-05&sort_by=popularity.desc"
+    ).then(({ results }) => {
+      setupcomingMovieTrailers(results.filter(val=>val.backdrop_path !== null));
+    });
+  },[]);
+
   const { config } = util();
   return (
-    <main>
+    <main className="welcome">
       <section
         id="ongoing"
         className="carousel slide carousel-fade"
@@ -118,10 +135,9 @@ function WelcomeSection() {
         ]}
         setFilter={setTrendingTime}
         currentFilter={trendingTime}
-        posterSize={posterSize}
       />
       <Genres />
-      <section className="my-4">
+      <section className="my-4 d-flex justify-content-center">
         <div className="d-flex overflow-x-scroll gap-4 p-4">
           <MediaTable
             param={
@@ -149,6 +165,23 @@ function WelcomeSection() {
           />
         </div>
       </section>
+      <DisplayMedia
+        data={ottPopular}
+        heading="On OTT"
+        filterOptions={[
+          "ottPopular",
+          { id: "netflix", value: "8", filterName: "Netflix" },
+          { id: "hotstar", value: "122", filterName: "Hotstar" },
+          { id: "voot", value: "121", filterName: "Voot" },
+        ]}
+        setFilter={setOttPlatform}
+        currentFilter={ottPlatform}
+      />
+
+      <Trailer
+        data={upcomingMovieTrailers}
+        heading="Upcoming Movies Trailer"
+      />
     </main>
   );
 }

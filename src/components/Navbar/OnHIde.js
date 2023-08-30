@@ -28,16 +28,16 @@ function OnHIde() {
               id="movies"
             >
               <li className="nav-item" data-bs-dismiss='offcanvas' role='button'>
-                <Link  className='nav-link' to="/movies/popular">Popular</Link>
+                <Link  className='nav-link' to={`/categorySearch/movies/popular/${null}`}>Popular</Link>
               </li>
               <li data-bs-dismiss='offcanvas' role='button' className="nav-item">
-                <Link className='nav-link' to="/movies/nowPlaying">Now Playing</Link>
+                <Link className='nav-link' to={`/categorySearch/movies/now_playing/${null}`}>Now Playing</Link>
               </li>
               <li data-bs-dismiss='offcanvas' role='button' className="nav-item">
-                <Link className='nav-link' to="/movies/topRated">Top Rated</Link>
+                <Link className='nav-link' to={`/categorySearch/movies/top_rated/${null}`}>Top Rated</Link>
               </li>
               <li data-bs-dismiss='offcanvas' role='button' className="nav-item">
-                <Link className='nav-link' to="/movies/upcoming">Upcoming</Link>
+                <Link className='nav-link' to={`/categorySearch/movies/upcoming/${null}`}>Upcoming</Link>
               </li>
             </ul>
           </li>
@@ -56,16 +56,16 @@ function OnHIde() {
               id="tvshows"
             >
               <li data-bs-dismiss='offcanvas' role='button' className="nav-item">
-                <Link className='nav-link' to="/tvShows/popular">Popular</Link>
+                <Link className='nav-link' to={`/categorySearch/tv/popular/${null}`}>Popular</Link>
               </li>
               <li data-bs-dismiss='offcanvas' role='button' className="nav-item">
-                <Link className='nav-link' to="/tvShows/nowPlaying">Now Playing</Link>
+                <Link className='nav-link' to={`/categorySearch/tv/now_playing/${null}`}>Now Playing</Link>
               </li>
               <li data-bs-dismiss='offcanvas' role='button' className="nav-item">
-                <Link className='nav-link' to="/tvShows/topRated">Top Rated</Link>
+                <Link className='nav-link' to={`/categorySearch/tv/top_rated/${null}`}>Top Rated</Link>
               </li>
               <li data-bs-dismiss='offcanvas' role='button' className="nav-item">
-                <Link className='nav-link' to="/tvShows/upcoming">Upcoming</Link>
+                <Link className='nav-link' to={`/categorySearch/tv/upcoming/${null}`}>Upcoming</Link>
               </li>
             </ul>
           </li>

@@ -14,7 +14,6 @@ function MediaTable({param,title}) {
       setListContent(results.slice(0, 5));
     });
   }, []);
-  console.log(listContent);
 
   return (
     <ul className="popular-list d-flex flex-column justify-content-between">
@@ -39,7 +38,9 @@ function MediaTable({param,title}) {
             ))
           }
           <li>
+            <Link to={`/categorySearch/discover/tv/${param}`}>
             View more <i className="fa-solid fa-angle-right ms-2"></i>
+            </Link>
           </li>
         </ul>
   );

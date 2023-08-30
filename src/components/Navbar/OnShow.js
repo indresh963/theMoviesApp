@@ -12,16 +12,16 @@ function OnShow() {
           Movies
         </button>
         <ul className="dropdown-menu">
-          <Link className="dropdown-item nav-link" to="/movies/popular">
+          <Link className="dropdown-item nav-link" to={`/categorySearch/movies/popular/${null}`}>
             Popular
           </Link>
-          <Link className="dropdown-item nav-link" to="/movies/nowPlaying">
+          <Link className="dropdown-item nav-link" to={`/categorySearch/movies/now_playing/${null}`}>
             Now Playing
           </Link>
-          <Link className="dropdown-item nav-link" to="/movies/topRated">
+          <Link className="dropdown-item nav-link" to={`/categorySearch/movies/top_rated/${null}`}>
             Top Rated
           </Link>
-          <Link className="dropdown-item nav-link" to="/movies/upcoming">
+          <Link className="dropdown-item nav-link" to={`/categorySearch/movies/upcoming/${null}`}>
             Upcoming
           </Link>
         </ul>
@@ -35,16 +35,16 @@ function OnShow() {
           TV shows
         </button>
         <ul className="dropdown-menu">
-          <Link className="dropdown-item nav-link" to="/tvShows/popular">
+          <Link className="dropdown-item nav-link" to={`/categorySearch/tv/popular/${null}`}>
             Popular
           </Link>
-          <Link className="dropdown-item nav-link" to="/tvShows/nowPlaying">
+          <Link className="dropdown-item nav-link" to={`/categorySearch/tv/now_playing/${null}`}>
             Now Playing
           </Link>
-          <Link className="dropdown-item nav-link" to="/tvShows/topRated">
+          <Link className="dropdown-item nav-link" to={`/categorySearch/tv/top_rated/${null}`}>
             Top Rated
           </Link>
-          <Link className="dropdown-item nav-link" to="/tvShows/upcoming">
+          <Link className="dropdown-item nav-link" to={`/categorySearch/tv/upcoming/${null}`}>
             Upcoming
           </Link>
         </ul>

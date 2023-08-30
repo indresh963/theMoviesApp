@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { util } from "./";
+import { Fragment } from "react";
 
 function DisplayMedia({
   data,
@@ -7,9 +8,7 @@ function DisplayMedia({
   filterOptions,
   setFilter,
   currentFilter,
-  posterSize
 }) {
-
   const { config, Badge } = util();
   function setParam(e, func) {
     func(e.target.value);
@@ -20,30 +19,24 @@ function DisplayMedia({
         <div className="card-header">
           <div className="d-flex align-items-center justify-content-between">
             <Badge>{heading}</Badge>
-
             <div className="btn-container">
-              <input
-                type="radio"
-                onChange={(e) => setParam(e, setFilter)}
-                checked={currentFilter === filterOptions[1].value}
-                id={filterOptions[1].id}
-                value={filterOptions[1].value}
-                name={filterOptions[0]}
-              />
-              <label htmlFor={filterOptions[1].id}>
-                {filterOptions[1].filterName}
-              </label>
-              <input
-                type="radio"
-                onChange={(e) => setParam(e, setFilter)}
-                checked={currentFilter === filterOptions[2].value}
-                id={filterOptions[2].id}
-                value={filterOptions[2].value}
-                name={filterOptions[0]}
-              />
-              <label htmlFor={filterOptions[2].id}>
-                {filterOptions[2].filterName}
-              </label>
+              {filterOptions.map((val, ind) => {
+                return (
+                  ind !== 0 && (
+                    <Fragment key={val.id}>
+                      <input
+                        type="radio"
+                        onChange={(e) => setParam(e, setFilter)}
+                        checked={currentFilter === val.value}
+                        id={val.id}
+                        value={val.value}
+                        name={val[0]}
+                      />
+                      <label htmlFor={val.id}>{val.filterName}</label>
+                    </Fragment>
+                  )
+                );
+              })}
             </div>
           </div>
         </div>
@@ -53,14 +46,18 @@ function DisplayMedia({
               <div className="card flex-shrink-0 media-card-body">
                 <div className="card-body flex-grow-0">
                   <img
-                    src={`${config}/${posterSize}/${val.poster_path}`}
+                    src={`${config}/${
+                      window.innerWidth > 768 ? "w154" : "w92"
+                    }/${val.poster_path}`}
                     alt="slide_for_trending"
-                    className="media-img"
+                    className="media-img shadow-sm"
                   />
-                  {val?.media_type && <span className="media-type">{val.media_type}</span>}
+                  {val?.media_type && (
+                    <span className="media-type">{val.media_type}</span>
+                  )}
                 </div>
-                <div className="card-footer">
-                  <h3>{val?.title ?? val?.name }</h3>
+                <div className="card-footer mt-2">
+                  <h3>{val?.title ?? val?.name}</h3>
                   <h4>{val.first_air_date ?? val.release_date}</h4>
                 </div>
               </div>

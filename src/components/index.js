@@ -13,4 +13,5 @@ export { default as  DisplayMedia} from './DisplayMedia.js'
 export { default as  Genres} from './Genres.js'
 export { default as  GenreMedia} from './GenreMedia.js'
 export { default as  MediaTable} from './MediaTable.js'
+export { default as  Trailer} from './Trailer.js'
 
