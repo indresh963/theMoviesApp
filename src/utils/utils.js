@@ -1,4 +1,8 @@
+
+
 export default function utils() {
+
+
   const config = "http://image.tmdb.org/t/p/";
 
   function Badge({ children }) {
@@ -8,5 +12,7 @@ export default function utils() {
       </span>
     );
   }
+
+
   return { config, Badge };
 }

@@ -5,10 +5,22 @@ function Trailer({ data, heading }) {
   const { config, Badge } = util();
   const [bgImg, setBgImg] = useState(null);
   const [videoKey, setVideoKey] = useState(null);
+  const [id, setid] = useState(null);
 
   useEffect(() => {
     data[0] && setBgImg(`${config}/original/${data[0].backdrop_path}`);
   }, [data]);
+
+  useEffect(() => {
+    id && Fetch(
+      `movie/${id}`,
+      1,
+      "GET",
+      "include_adult=false&include_video=false&language=en-US&page=1&append_to_response=videos"
+    ).then(({ videos: { results } }) => {
+      setVideoKey(results[0]);
+    });
+  }, [id]);
   return (
     <section className="my-4">
       <div
@@ -33,15 +45,7 @@ function Trailer({ data, heading }) {
               className="card flex-shrink-0 media-card-body"
               style={{ background: "transparent", cursor: "pointer" }}
               onClick={() => {
-                Fetch(
-                  `movie/${val.id}`,
-                  1,
-                  "GET",
-                  "include_adult=false&include_video=false&language=en-US&page=1&append_to_response=videos"
-                ).then(({ videos: { results } }) => {
-                  setVideoKey(results[0]);
-                  console.log(results);
-                });
+                setid(val.id);
               }}
             >
               <div
@@ -70,14 +74,18 @@ function Trailer({ data, heading }) {
       </div>
       {videoKey && (
         <>
-          <div id='player'>
-            <button type='button' className="btn-close btn-close-white ms-2" onClick={()=>setVideoKey(null)}></button>
-          <ReactPlayer
-            url={`https://www.youtube.com/watch?v=${videoKey.key}`}
-            width="100%"
-            height="100%"
-            controls={true}
-          />
+          <div id="player">
+            <button
+              type="button"
+              className="btn-close btn-close-white ms-2"
+              onClick={() => setVideoKey(null)}
+            ></button>
+            <ReactPlayer
+              url={`https://www.youtube.com/watch?v=${videoKey.key}`}
+              width="100%"
+              height="100%"
+              controls={true}
+            />
           </div>
         </>
       )}

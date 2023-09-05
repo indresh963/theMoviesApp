@@ -42,7 +42,7 @@ function DisplayMedia({
         </div>
         <div className="card-body d-flex gap-4 media_section">
           {data.map((val) => (
-            <Link key={val.id} to={`${val.id}`}>
+            <Link key={val.id} to={`/${val.id}`}>
               <div className="card flex-shrink-0 media-card-body">
                 <div className="card-body flex-grow-0">
                   <img
