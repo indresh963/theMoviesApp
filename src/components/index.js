@@ -15,4 +15,5 @@ export { default as  GenreMedia} from './GenreMedia.js'
 export { default as  MediaTable} from './MediaTable.js'
 export { default as  Trailer} from './Trailer.js'
 export { default as  SearchFeed} from './SearchFeed.js'
+export { default as  Pagination} from './Pagination.js'
 

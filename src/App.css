@@ -595,3 +595,21 @@ h3#trailer{
   color:var(--primary)
 }
 /* searchNav  */
+
+/* searchFeed  */
+
+h2.query{
+  text-transform: initial;
+}
+
+h2.query span{
+  font-weight: 600;
+
+}
+/* searchFeed  */
+
+/* pagination  */
+button.page-link:focus{
+  box-shadow: none;
+}
+/* pagination  */

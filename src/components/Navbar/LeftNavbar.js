@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 function LeftNavbar({ hide }) {
   const [showSearchBar, setShowSearchBar] = useState(false);
   const navigate = useNavigate();
-  const [ query, setQuery ] = useState();
+  const [ query, setQuery ] = useState('');
 
   function handleKeyUp(e){
     if(e.key === 'Enter') handleSearch();
