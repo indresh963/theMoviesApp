@@ -12,16 +12,16 @@ function OnShow() {
           Movies
         </button>
         <ul className="dropdown-menu">
-          <Link className="dropdown-item nav-link" to={`/categorySearch/movies/popular/${null}`}>
+          <Link className="dropdown-item nav-link" to={`/categorySearch/movie/popular/Popular Movies/${null}`}>
             Popular
           </Link>
-          <Link className="dropdown-item nav-link" to={`/categorySearch/movies/now_playing/${null}`}>
+          <Link className="dropdown-item nav-link" to={`/categorySearch/movie/now_playing/Now Playing Movies/${null}`}>
             Now Playing
           </Link>
-          <Link className="dropdown-item nav-link" to={`/categorySearch/movies/top_rated/${null}`}>
+          <Link className="dropdown-item nav-link" to={`/categorySearch/movie/top_rated/Top Rated Movies/${null}`}>
             Top Rated
           </Link>
-          <Link className="dropdown-item nav-link" to={`/categorySearch/movies/upcoming/${null}`}>
+          <Link className="dropdown-item nav-link" to={`/categorySearch/movie/upcoming/Upcoming Movies/${null}`}>
             Upcoming
           </Link>
         </ul>
@@ -35,17 +35,17 @@ function OnShow() {
           TV shows
         </button>
         <ul className="dropdown-menu">
-          <Link className="dropdown-item nav-link" to={`/categorySearch/tv/popular/${null}`}>
+          <Link className="dropdown-item nav-link" to={`/categorySearch/tv/popular/Popular TV Shows/${null}`}>
             Popular
           </Link>
-          <Link className="dropdown-item nav-link" to={`/categorySearch/tv/now_playing/${null}`}>
-            Now Playing
+          <Link className="dropdown-item nav-link" to={`/categorySearch/tv/airing_today/TV Shows Airing Today/${null}`}>
+            Airing Today
           </Link>
-          <Link className="dropdown-item nav-link" to={`/categorySearch/tv/top_rated/${null}`}>
+          <Link className="dropdown-item nav-link" to={`/categorySearch/tv/top_rated/Top Rated TV Shows/${null}`}>
             Top Rated
           </Link>
-          <Link className="dropdown-item nav-link" to={`/categorySearch/tv/upcoming/${null}`}>
-            Upcoming
+          <Link className="dropdown-item nav-link" to={`/categorySearch/tv/on_the_air/Currently Airing TV Shows/${null}`}>
+            On TV
           </Link>
         </ul>
       </li>

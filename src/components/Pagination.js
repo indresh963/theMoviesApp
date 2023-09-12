@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Pagination({ total_pages, setPage, page }) {
   const pageNum = [1, 2, 3, 4, 5, 6, 7];
   const [ initiator, setInitiator ] = useState(0);
+  useEffect(()=>{
+    page === 1 && setInitiator(0);
+  },[page])
   function handlePages(e){
     if(initiator !== 0 && Number(e.target.value) === initiator+1){
       initiator - 3 >= 0 ? setInitiator(val=> val-3) : setInitiator(0);
@@ -10,11 +13,9 @@ function Pagination({ total_pages, setPage, page }) {
     else if(Number(e.target.value) === initiator + pageNum[6] && e.target.value < total_pages){
       if(initiator + pageNum[6] + 3 <= total_pages){
         setInitiator(val=> val+3)
-        console.log('first')
       }
       else{
          setInitiator(total_pages-7);
-        console.log('second')
 
       }
     }
@@ -29,7 +30,7 @@ function Pagination({ total_pages, setPage, page }) {
   return (
     <ul className="pagination pagination-sm mt-5 justify-content-center">
       {pageNum.map((val,ind) => ind <= total_pages-1 && (
-        <li
+        <li key={ind}
           className={
             page === initiator + val ? " page-item active " : " page-item"
           }

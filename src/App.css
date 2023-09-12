@@ -57,10 +57,10 @@
 
 h1 {
   font-size: var(--font-xlg);
-  font-weight: 700;
-  color: var(--over-primary);
+  font-weight: 600;
+  color: var(--heading);
   text-transform: capitalize;
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
   line-height: 2rem;
 }
 
@@ -104,6 +104,11 @@ h5 {
   margin: 0;
   letter-spacing: 0.8px;
   word-wrap: break-word;
+}
+
+h6{
+  font-size: 1rem;
+  color: rgb(70, 66, 66);
 }
 
 p {
@@ -613,3 +618,216 @@ button.page-link:focus{
   box-shadow: none;
 }
 /* pagination  */
+
+/* filter section  */
+
+.filter-section{
+  border-radius: var(--br-lg);
+  box-shadow: 0 0 1px;
+}
+
+.filter-button{
+  background-color: #fff;
+  display: block;
+  width:100%;
+  text-align: center;
+  font-size: 1.15rem;
+  letter-spacing: 2px;
+  font-weight: 600;
+  color:rgb(70, 66, 66);
+  padding:0.7rem 0;
+  border-radius: var(--br-lg);
+  border:0;
+}
+.filter-button:active{outline: none;}
+
+.border-top{
+  border-top: 0.3px solid rgb(226, 221, 221);
+}
+
+.options label{
+  color:rgb(70, 66, 66);
+}
+
+.options select{
+  width: 100%;
+  display: block;
+  margin-top: 1rem;
+  border-radius: var(--br-sm);
+  border: none;
+  box-shadow: 0 0 1.5px;
+  padding:0.3rem;
+  font-size:0.85rem;
+  text-transform: capitalize;
+}
+
+.options select:focus{
+  outline: none;
+}
+
+#providers label{
+  cursor: pointer;
+}
+
+#providers label img:hover{
+  box-shadow: 0 0 20px blue;
+}
+
+#providers input:checked+label img{
+  box-shadow: 0 0 20px blue;
+}
+
+.genre-btn{
+  border-radius:50rem;
+  color:rgb(70, 66, 66);
+  font-size: var(--font-base);
+  border:0.2px solid ;
+  padding:0.2rem 0.6rem;
+  cursor: pointer;
+}
+
+input[name='genre']:checked + label{
+  background-color: var(--primary);
+  color:var(--over-primary)
+}
+
+.slider-container{
+  position:relative;
+  background-color: #abb1ba;
+  height: 2px;
+  border-radius: 50rem;
+}
+
+.slider-container:hover::before{
+  content: attr(data-title);
+  position: absolute;
+  bottom:700%;
+  left:40%;
+  padding:5px 9px;
+  background-color: black;
+  color:white;
+  font-size: var(--font-sm);
+  font-weight: 600;
+  border-radius: var(--br-sm);
+}
+
+.dual-slider{
+  display: block;
+  height: 2px;
+  background-color: var(--primary);
+  border-radius: 2.5px;
+}
+
+input[type='range']{
+  height:5px;
+  position: absolute;
+  top:-1px;
+  width:100%;
+  appearance: none;
+  background:none;
+  pointer-events: none;
+}
+
+input[type='range']::-webkit-slider-thumb{
+  height: 20px;
+  width: 20px;
+  border-radius:50%;
+  background-color: var(--primary);
+  appearance: none;
+  pointer-events:all;
+
+}
+
+input[type='range']:last-child::-webkit-slider-thumb{
+  height: 27px;
+  width: 27px;
+}
+
+.date-label{
+  font-size: var(--font-sm);
+  color:rgb(253, 253, 253);
+}
+
+input[type='date']{
+  flex-basis: 70%;
+  border:0.2px solid rgb(207, 203, 203);
+  padding:1px 4px;
+  border-radius: var(--br-sm);
+}
+
+.release-date{
+  margin-top:2.5rem;
+}
+
+.chip_search{
+  display: flex;
+  flex-wrap: wrap;
+  gap:3px;
+}
+
+.filter-search{
+  border:0;
+  flex-basis: 50%;
+}
+
+.filter-search:focus{
+  outline:0;
+}
+
+.chip{
+  display: flex;
+  align-content: center;
+  gap:10px;
+  padding: 0.2rem 0.5rem;
+  background-color:rgb(208, 228, 245);
+  color:rgb(135, 180, 216);
+  border-radius: 50rem;
+}
+
+.chip p{
+  margin-bottom: 0;
+  font-size: var(--font-sm);
+}
+
+.chip button{
+  background: rgb(75, 149, 209);
+  border:0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  font-size: var(--font-xsm);
+  padding:0;
+  margin-top:2px;
+}
+
+.filter-section .list-group{
+  height: 200px;
+  overflow-y: scroll;
+  padding:0.5rem 0;
+}
+
+.filter-section .list-group .list-group-item{
+  cursor: pointer;
+}
+
+.filter-section .list-group .list-group-item img{
+  margin-right: 1rem;
+  width: 2.5rem;
+  height: auto;
+  border-radius: var(--br-sm);
+}
+
+.filter-section .list-group .list-group-item span{
+  font-size: 1rem;
+}
+
+.apply_filter{
+  background-color: var(--primary);
+  border:0;
+  border-radius: var(--br-lg);
+  color:var(--over-primary);
+  font-size: var(--font-xlg);
+  letter-spacing: 3px;
+  padding:0.5rem 0;
+}
+/* filter section  */

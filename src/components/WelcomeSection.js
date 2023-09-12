@@ -70,6 +70,16 @@ function WelcomeSection() {
       const arr = results.slice(0, 10);
       setCarouselItems(arr.filter((val) => val.backdrop_path !== null));
     });
+
+    Fetch(
+      `discover/movie`,
+      1,
+      "GET",
+      `include_adult=false&include_video=true&language=en-US&page=1&primary_release_date.gte=${upcomingReleaseDate.current}&sort_by=popularity.desc`
+    ).then(({ results }) => {
+      setupcomingMovieTrailers(results.filter(val=>val.backdrop_path !== null));
+    });
+
   }, []);
 
   useEffect(() => {
@@ -93,17 +103,6 @@ function WelcomeSection() {
       setOttPopular(results);
     });
   }, [ottPlatform]);
-
-  useEffect(() => {
-    Fetch(
-      `discover/movie`,
-      1,
-      "GET",
-      `include_adult=false&include_video=true&language=en-US&page=1&primary_release_date.gte=${upcomingReleaseDate.current}&sort_by=popularity.desc`
-    ).then(({ results }) => {
-      setupcomingMovieTrailers(results.filter(val=>val.backdrop_path !== null));
-    });
-  },[]);
 
   const { config } = util();
   return (
@@ -192,25 +191,25 @@ function WelcomeSection() {
         <div className="d-flex overflow-x-scroll gap-4 p-4">
           <MediaTable
             param={
-              "include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=16&with_origin_country=JP&vote_count.gte=2000"
+              "language=en-US&sort_by=popularity.desc&with_genres=16&with_origin_country=JP&vote_count.gte=200"
             }
             title="Anime"
           />
           <MediaTable
             param={
-              "include_adult=true&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_origin_country=KR&vote_count.gte=200"
+              "language=en-US&sort_by=popularity.desc&with_origin_country=KR"
             }
             title="K-Drama"
           />
           <MediaTable
             param={
-              "include_adult=true&include_video=false&language=en-US&page=1&sort_by=popularity.desc&vote_average.gte=7.5&first_air_date_year=2023&with_original_language=en"
+              "language=en-US&sort_by=popularity.desc&first_air_date_year=2023&vote_average.gte=7&vote_count.gte=100"
             }
             title="2023 Shows"
           />
           <MediaTable
             param={
-              "include_adult=false&include_video=false&language=en-US&page=1&sort_by=vote_average.desc&with_origin_country=IN&vote_count.gte=50"
+              "language=en-US&sort_by=vote_average.desc&with_origin_country=IN"
             }
             title="Hindi Shows"
           />

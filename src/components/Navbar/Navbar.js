@@ -8,7 +8,7 @@ import LeftNavbar from "./LeftNavbar";
 function Navbar() {
   const [hide, setHide] = useState(window.innerWidth < 768);
   const navigate = useNavigate();
-  const [ query, setQuery ] = useState();
+  const [ query, setQuery ] = useState('');
 
   function handleKeyUp(e){
     if(e.key === 'Enter') handleSearch();

@@ -38,7 +38,7 @@ function MediaTable({param,title}) {
             ))
           }
           <li>
-            <Link to={`/categorySearch/discover/tv/${param}`}>
+            <Link to={`/categorySearch/discover/tv/${title}/${param}`}>
             View more <i className="fa-solid fa-angle-right ms-2"></i>
             </Link>
           </li>
