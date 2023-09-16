@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Fetch, util } from "./";
-function MediaTable({param,title}) {
+function MediaTable({param,title,paramsObj}) {
   const [listContent, setListContent] = useState([]);
   const { config } = util();
   useEffect(() => {
@@ -38,7 +38,8 @@ function MediaTable({param,title}) {
             ))
           }
           <li>
-            <Link to={`/categorySearch/discover/tv/${title}/${param}`}>
+            <Link to={`/categorySearch/tv/Popular ${title}/`}
+            state={{ paramsObj: { ...paramsObj} }}>
             View more <i className="fa-solid fa-angle-right ms-2"></i>
             </Link>
           </li>

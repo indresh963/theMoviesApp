@@ -13,7 +13,8 @@ function Genres() {
         </div>
         <div className="genre-body px-3 pb-4">
           {genres.map((val) => (
-            <Link key={val.genreId} to={`/genreMedia/${val.genreId}`}>
+            <Link key={val.genreId} to={`/categorySearch/movie/Popular ${val.name} Movies/`}
+            state={{ paramsObj: { defaultSort: "popularity.desc", defaultGenre:[val.genreId] } }}>
               <div className="card">
                 <div className="card-body">
                   <img

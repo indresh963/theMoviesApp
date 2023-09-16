@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import { useDateSetter } from "../";
+
 function OnHIde() {
   return (
     <div className="offcanvas offcanvas-start d-flex" id="navigator-menu">
@@ -28,16 +30,32 @@ function OnHIde() {
               id="movies"
             >
               <li className="nav-item" data-bs-dismiss='offcanvas' role='button'>
-                <Link  className='nav-link' to={`/categorySearch/movie/{}/Popular Movies`}>Popular</Link>
+                <Link  className='nav-link' to={`/categorySearch/movie/Popular Movies`} state={{ paramsObj: { defaultSort: "popularity.desc" } }}>Popular</Link>
               </li>
               <li data-bs-dismiss='offcanvas' role='button' className="nav-item">
-                <Link className='nav-link' to={`/categorySearch/movie/now_playing/Now Playing Movies/${null}`}>Now Playing</Link>
+                <Link className='nav-link' to={`/categorySearch/movie/Now Playing Movies`} state={{
+              paramsObj: {
+                defaultSort: "popularity.desc",
+                r_type: "2|3",
+                defaultInitialRelease: useDateSetter("before", 25),
+                defaultFinalRelease: useDateSetter("before", 0),
+              },
+            }}>Now Playing</Link>
               </li>
               <li data-bs-dismiss='offcanvas' role='button' className="nav-item">
-                <Link className='nav-link' to={`/categorySearch/movie/top_rated/Top Rated Movies/${null}`}>Top Rated</Link>
+                <Link className='nav-link' to={`/categorySearch/movie/Top Rated Movies`} state={{
+              paramsObj: {
+                defaultSort: "vote_average.desc",
+                defaultVotes: "200",
+              },
+            }}>Top Rated</Link>
               </li>
               <li data-bs-dismiss='offcanvas' role='button' className="nav-item">
-                <Link className='nav-link' to={`/categorySearch/movie/upcoming/Upcoming Movies/${null}`}>Upcoming</Link>
+                <Link className='nav-link' to={`/categorySearch/movie/Upcoming Movies`} state={{
+              paramsObj:{defaultSort: "popularity.desc",
+              r_type: "2|3",
+              defaultInitialRelease: useDateSetter("after", 5)}
+            }}>Upcoming</Link>
               </li>
             </ul>
           </li>
@@ -56,16 +74,37 @@ function OnHIde() {
               id="tvshows"
             >
               <li data-bs-dismiss='offcanvas' role='button' className="nav-item">
-                <Link className='nav-link' to={`/categorySearch/tv/popular/Poplar TV Shows/${null}`}>Popular</Link>
+                <Link className='nav-link' to={`/categorySearch/tv/Poplar TV Shows`} state={{
+              paramsObj:{
+                defaultSort:"popularity.desc",
+              }
+            }}>Popular</Link>
               </li>
               <li data-bs-dismiss='offcanvas' role='button' className="nav-item">
-                <Link className='nav-link' to={`/categorySearch/tv/on_the_air/Currently Airing TV Shows/${null}`}>On TV</Link>
+                <Link className='nav-link' to={`/categorySearch/tv/Currently Airing TV Shows`} state={{
+              paramsObj:{
+                defaultSort:"popularity.desc",
+                defaultInitialRelease: useDateSetter("after", 0),
+                defaultFinalRelease: useDateSetter("after", 0),
+              }
+            }}>On TV</Link>
               </li>
               <li data-bs-dismiss='offcanvas' role='button' className="nav-item">
-                <Link className='nav-link' to={`/categorySearch/tv/top_rated/Top Rated TV Shows/${null}`}>Top Rated</Link>
+                <Link className='nav-link' to={`/categorySearch/tv/Top Rated TV Shows`} state={{
+              paramsObj: {
+                defaultSort: "vote_average.desc",
+                defaultVotes: "200",
+              },
+            }}>Top Rated</Link>
               </li>
               <li data-bs-dismiss='offcanvas' role='button' className="nav-item">
-                <Link className='nav-link' to={`/categorySearch/tv/airing_today/TV Shows Airing Today/${null}`}>Airing Today</Link>
+                <Link className='nav-link' to={`/categorySearch/tv/TV Shows Airing Today`} state={{
+              paramsObj:{
+                defaultSort:"popularity.desc",
+                defaultInitialRelease: useDateSetter("after", 0),
+                defaultFinalRelease: useDateSetter("after", 0),
+              }
+            }}>Airing Today</Link>
               </li>
             </ul>
           </li>

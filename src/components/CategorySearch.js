@@ -89,6 +89,8 @@ function CategorySearch() {
     defaultFinalRelease,
     defaultOriginLanguage,
     defaultReleaseRegion,
+    defaultLowerScore,
+    defaultWatchProviders
   } = paramsObj;
 
   const [page, setPage] = useState(1);
@@ -97,7 +99,7 @@ function CategorySearch() {
 
   const initialFilters = {
     minUserVotes: defaultVotes ? defaultVotes : "0",
-    lowerScore: "0",
+    lowerScore: defaultLowerScore ? defaultLowerScore : "0",
     upperScore: "10",
     cast: [],
     keywords: [],
@@ -107,7 +109,7 @@ function CategorySearch() {
     with_origin_language: defaultOriginLanguage ? defaultOriginLanguage : "",
     minDuration: "0",
     maxDuration: "400",
-    with_watch_providers: [],
+    with_watch_providers: defaultWatchProviders ? defaultWatchProviders : [],
     release_date_gte: defaultInitialRelease ? defaultInitialRelease : "",
     release_date_lte: defaultFinalRelease ? defaultFinalRelease : "",
     release_region: defaultReleaseRegion ? defaultReleaseRegion : "",
@@ -123,6 +125,7 @@ function CategorySearch() {
     dispatch({type:"routeChanged",payload:initialFilters})
   },[location])
 
+  console.log(filter);
   useEffect(() => {
     console.log("changed route")
     Fetch(

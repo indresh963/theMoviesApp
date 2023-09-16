@@ -143,26 +143,54 @@ function WelcomeSection() {
         <div className="d-flex overflow-x-scroll gap-4 p-4">
           <MediaTable
             param={
-              "language=en-US&sort_by=popularity.desc&with_genres=16&with_origin_country=JP&vote_count.gte=200"
+              "language=en-US&sort_by=popularity.desc&with_genres=16&with_original_language=ja&vote_count.gte=200"
             }
+            paramsObj={{
+              defaultSort:"popularity.desc",
+              defaultGenre:[16],
+              defaultOriginLanguage:"ja",
+              defaultVotes:200,
+            }}
             title="Anime"
           />
           <MediaTable
             param={
-              "language=en-US&sort_by=popularity.desc&with_origin_country=KR"
+              "language=en-US&sort_by=popularity.desc&with_original_language=ko&vote_count.gte=100"
             }
+
+            paramsObj={{
+              defaultSort:"popularity.desc",
+              defaultOriginLanguage:'ko',
+              defaultVotes:100,
+            }}
+
             title="K-Drama"
           />
           <MediaTable
             param={
-              "language=en-US&sort_by=popularity.desc&first_air_date_year=2023&vote_average.gte=7&vote_count.gte=100"
+              `language=en-US&sort_by=popularity.&with_original_language=en&with_watch_providers=8, 119, 122, 121, 232, 350, 237&vote_average.gte=8&vote_count.gte=200`
             }
-            title="2023 Shows"
+
+            paramsObj={{
+              defaultSort:"popularity.desc",
+              defaultLowerScore:8,
+              defaultVotes:200,
+              defaultWatchProviders:[8, 119, 122, 121, 232, 350, 237],
+              defaultOriginLanguage:"en"
+            }}
+
+            title="Web Series"
           />
           <MediaTable
             param={
-              "language=en-US&sort_by=vote_average.desc&with_origin_country=IN"
+              "language=en-US&sort_by=popularity.desc&with_original_language=hi"
             }
+
+            paramsObj={{
+              defaultSort:"popularity.desc",
+              defaultOriginLanguage:"hi",
+            }}
+
             title="Hindi Shows"
           />
         </div>
