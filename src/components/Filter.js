@@ -1,22 +1,36 @@
 import { useState, useEffect } from "react";
 import { Fetch, util } from ".";
 
-function Filter() {
+function Filter({
+  state: {
+    sort_by,
+    watch_region,
+    with_watch_providers,
+    with_origin_language,
+    with_genre,
+    lowerScore,
+    upperScore,
+    minUserVotes,
+    minDuration,
+    maxDuration,
+    cast,
+    keywords,
+    release_date_gte,
+    release_date_lte,
+    release_region,
+  },
+  dispatch,
+  setSearchFlag,
+  setPage,
+  media,
+}) {
   const [country, setCountry] = useState([]);
   const [languages, setLanguages] = useState([]);
   const [providers, setProviders] = useState([]);
-  const [lowerScore, setLowerScore] = useState("0");
-  const [upperScore, setUpperScore] = useState("10");
-  const [maxDuration, setMaxDuration] = useState("400");
-  const [minDuration, setMinDuration] = useState("0");
-  const [minUserVotes, setMinUserVotes] = useState("0");
   const [searchCast, setSearchCast] = useState([]);
-  const [cast, setCast] = useState([]);
   const [searchKeyword, setSearchKeyword] = useState([]);
-  const [keywords, setKeywords] = useState([]);
 
   const { config, genres } = util();
-
   useEffect(() => {
     Fetch(`configuration/countries`, 1, "GET", `language=en-US`).then(
       (response) => {
@@ -28,15 +42,19 @@ function Filter() {
         setLanguages(response);
       }
     );
-    Fetch(
-      `watch/providers/movie`,
-      1,
-      "GET",
-      `language=en-US&watch_region=IN`
-    ).then(({ results }) => {
-      setProviders(results);
-    });
   }, []);
+
+  useEffect(() => {
+    watch_region &&
+      Fetch(
+        `watch/providers/movie`,
+        1,
+        "GET",
+        `language=en-US&watch_region=${watch_region}`
+      ).then(({ results }) => {
+        setProviders(results);
+      });
+  }, [watch_region]);
 
   function searchKeywordFunc(e) {
     Fetch(
@@ -47,11 +65,6 @@ function Filter() {
     ).then(({ results }) => {
       setSearchKeyword(results);
     });
-  }
-
-  function setKeywordFunc({ id, name }) {
-    setKeywords([...keywords, { id, name }]);
-    setSearchKeyword([]);
   }
 
   function searchCastFunc(e) {
@@ -65,17 +78,6 @@ function Filter() {
     });
   }
 
-  function setCastFunc({ id, name }) {
-    setCast([...cast, { id, name }]);
-    setSearchCast([]);
-  }
-
-  function removeData(ind,func,arr) {
-    arr.splice(ind,1);
-    func([...arr]);
-  }
-
-  console.log(keywords);
   return (
     <div className="d-flex flex-column gap-4">
       <div className="filter-section">
@@ -89,7 +91,13 @@ function Filter() {
         </button>
         <div className="options border-top collapse p-3" id="sort">
           <label htmlFor="sortby">Sort by</label>
-          <select id="sortby">
+          <select
+            value={sort_by}
+            onChange={(e) =>
+              dispatch({ type: "sort_by", payload: e.target.value })
+            }
+            id="sortby"
+          >
             <option value="popularity.desc">Popularity descending</option>
             <option value="popularity.asc">Popularity ascending</option>
             <option value="vote_average.desc">Votes descending</option>
@@ -102,8 +110,8 @@ function Filter() {
             <option value="primary_release_date.asc">
               release date ascending
             </option>
-            <option value="vote_count.desc">Vote descending</option>
-            <option value="vote_count.asc">Vote ascending</option>
+            <option value="vote_count.desc">Vote count descending</option>
+            <option value="vote_count.asc">Vote count ascending</option>
           </select>
         </div>
       </div>
@@ -118,13 +126,18 @@ function Filter() {
         </button>
         <div className="options border-top collapse p-3" id="region&platform">
           <label htmlFor="countries">Country</label>
-          <select defaultValue="IN" id="countries">
+          <select
+            value={watch_region}
+            onChange={(e) =>
+              dispatch({ type: "watch_region", payload: e.target.value })
+            }
+            id="countries"
+          >
+            <option value="" disabled>
+              -- select watch region --
+            </option>
             {country.map((val) => (
-              <option
-                selected={val.iso_3166_1 === "IN"}
-                key={val.iso_3166_1}
-                value={val.iso_3166_1}
-              >
+              <option key={val.iso_3166_1} value={val.iso_3166_1}>
                 {val.english_name}
               </option>
             ))}
@@ -136,6 +149,13 @@ function Filter() {
             {providers.map((val) => (
               <div key={val.provider_id}>
                 <input
+                  checked={with_watch_providers.includes(val.provider_id)}
+                  onChange={(e) =>
+                    dispatch({
+                      type: "with_watch_providers",
+                      payload: val.provider_id,
+                    })
+                  }
                   className="d-none"
                   id={val.provider_id}
                   type="checkbox"
@@ -166,9 +186,15 @@ function Filter() {
         <div className="options border-top show collapse p-3" id="filter">
           <div className="mb-4">
             <label htmlFor="countries">Language</label>
-            <select defaultValue="IN" id="countries">
-              <option val="" selected disabled>
-                -- Select a language --
+            <select
+              value={with_origin_language}
+              onChange={(e) =>
+                dispatch({ type: "language", payload: e.target.value })
+              }
+              id="countries"
+            >
+              <option value="" disabled>
+                -- select original language --
               </option>
               {languages.map((val) => (
                 <option key={val.iso_639_1} value={val.iso_639_1}>
@@ -184,6 +210,10 @@ function Filter() {
               {genres.map((val) => (
                 <div key={val.genreId}>
                   <input
+                    onChange={() =>
+                      dispatch({ type: "genres", payload: val.genreId })
+                    }
+                    checked={with_genre.includes(val.genreId)}
                     className="d-none"
                     type="checkbox"
                     id={val.genreId}
@@ -218,8 +248,8 @@ function Filter() {
                     lowerScore === upperScore &&
                     +e.target.value - 1 === +lowerScore
                   )
-                    setUpperScore(e.target.value);
-                  setLowerScore(e.target.value);
+                    dispatch({ type: "upperScore", payload: e.target.value });
+                  dispatch({ type: "lowerScore", payload: e.target.value });
                 }}
                 value={lowerScore}
                 type="range"
@@ -232,8 +262,8 @@ function Filter() {
                     lowerScore === upperScore &&
                     +e.target.value + 1 === +upperScore
                   )
-                    setLowerScore(e.target.value);
-                  setUpperScore(e.target.value);
+                    dispatch({ type: "lowerScore", payload: e.target.value });
+                  dispatch({ type: "upperScore", payload: e.target.value });
                 }}
                 value={upperScore}
                 type="range"
@@ -259,7 +289,7 @@ function Filter() {
               ></span>
               <input
                 onInput={(e) => {
-                  setMinUserVotes(e.target.value);
+                  dispatch({ type: "minUserVotes", payload: e.target.value });
                 }}
                 value={minUserVotes}
                 type="range"
@@ -290,8 +320,8 @@ function Filter() {
                     minDuration === maxDuration &&
                     +e.target.value - 10 === +minDuration
                   )
-                    setMaxDuration(e.target.value);
-                  setMinDuration(e.target.value);
+                    dispatch({ type: "maxDuration", payload: e.target.value });
+                  dispatch({ type: "minDuration", payload: e.target.value });
                 }}
                 value={minDuration}
                 type="range"
@@ -305,8 +335,8 @@ function Filter() {
                     +minDuration === +maxDuration &&
                     +e.target.value + 10 === +maxDuration
                   )
-                    setMinDuration(e.target.value);
-                  setMaxDuration(e.target.value);
+                    dispatch({ type: "minDuration", payload: e.target.value });
+                  dispatch({ type: "maxDuration", payload: e.target.value });
                 }}
                 value={maxDuration}
                 type="range"
@@ -319,13 +349,18 @@ function Filter() {
 
           <div className="mb-4 border rounded p-2 release-date">
             <label htmlFor="countries">Release Region</label>
-            <select defaultValue="IN" id="countries">
+            <select
+              value={release_region}
+              onChange={(e) =>
+                dispatch({ type: "release_region", payload: e.target.value })
+              }
+              id="countries"
+            >
+              <option value="" disabled>
+                -- select release region
+              </option>
               {country.map((val) => (
-                <option
-                  selected={val.iso_3166_1 === "IN"}
-                  key={val.iso_3166_1}
-                  value={val.iso_3166_1}
-                >
+                <option key={val.iso_3166_1} value={val.iso_3166_1}>
                   {val.english_name}
                 </option>
               ))}
@@ -334,53 +369,101 @@ function Filter() {
             <div className="d-flex flex-column gap-3">
               <div className="d-flex justify-content-between">
                 <label className="date-label">From</label>
-                <input type="date" name="intial_release_date" />
+                <input
+                  value={release_date_gte}
+                  onChange={(e) =>
+                    dispatch({
+                      type: "release",
+                      payload: {
+                        param: "release_date_gte",
+                        data: e.target.value,
+                      },
+                    })
+                  }
+                  type="date"
+                  name="intial_release_date"
+                />
               </div>
               <div className="d-flex justify-content-between">
                 <label className="date-label">To</label>
-                <input type="date" name="final_release_date" />
+                <input
+                  value={release_date_lte}
+                  onChange={(e) =>
+                    dispatch({
+                      type: "release",
+                      payload: {
+                        param: "release_date_lte",
+                        data: e.target.value,
+                      },
+                    })
+                  }
+                  type="date"
+                  name="final_release_date"
+                />
               </div>
             </div>
           </div>
 
-          <div className="mb-4">
-            <h6 className="mb-3">Cast</h6>
-            <div className="chip_search p-1 rounded border border-1">
-              {cast.map((val, ind) => (
-                <div key={val.id} className="chip">
-                  <p>{val.name}</p>
-                  <button
-                    onClick={() => removeData(ind, setCast,cast)}
-                    type="button"
-                  >
-                    <i className="fa-solid fa-x"></i>
-                  </button>
+          {media === "movie" && (
+            <>
+              <div className="mb-4">
+                <h6 className="mb-3">Cast</h6>
+                <div className="chip_search p-1 rounded border border-1">
+                  {cast.map((val, ind) => (
+                    <div key={val.id} className="chip">
+                      <p>{val.name}</p>
+                      <button
+                        onClick={() =>
+                          dispatch({
+                            type: "removeData",
+                            payload: { param: "cast", ind: ind },
+                          })
+                        }
+                        type="button"
+                      >
+                        <i className="fa-solid fa-x"></i>
+                      </button>
+                    </div>
+                  ))}
+                  <input
+                    onChange={searchCastFunc}
+                    className="filter-search"
+                    type="search"
+                    name="cast_search"
+                  />
                 </div>
-              ))}
-              <input
-                onChange={searchCastFunc}
-                className="filter-search"
-                type="search"
-                name="cast_search"
-              />
-            </div>
-          </div>
-          {searchCast[0] && (
-            <ul className="list-group mb-4">
-              {searchCast.map((val) => (
-                <li
-                  key={val.id}
-                  className="list-group-item"
-                  onClick={() => setCastFunc(val)}
-                >
-                  {val.profile_path && (
-                    <img src={`${config}/w45/${val.profile_path}`} alt="cast" />
-                  )}
-                  <span>{val.name}</span>
-                </li>
-              ))}
-            </ul>
+              </div>
+              {searchCast[0] && (
+                <ul className="list-group mb-4">
+                  {searchCast.map((val) => (
+                    <li
+                      key={val.id}
+                      className="list-group-item"
+                      onClick={() => {
+                        dispatch({
+                          type: "keyCastAdd",
+                          payload: {
+                            param: "cast",
+                            data: { id: val.id, name: val.name },
+                          },
+                        });
+                        setSearchCast([]);
+                      }}
+                    >
+                      {val.profile_path && (
+                        <img
+                          src={`${config}/w45/${val.profile_path}`}
+                          alt="cast"
+                        />
+                      )}
+                      <span>{val.name}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </>
           )}
+
           <div>
             <h6 className="mb-3">Keywords</h6>
             <div className="chip_search p-1 rounded border border-1">
@@ -388,7 +471,12 @@ function Filter() {
                 <div key={val.id} className="chip">
                   <p>{val.name}</p>
                   <button
-                    onClick={() => removeData(ind,setKeywords,keywords)}
+                    onClick={() =>
+                      dispatch({
+                        type: "removeData",
+                        payload: { param: "keywords", ind: ind },
+                      })
+                    }
                     type="button"
                   >
                     <i className="fa-solid fa-x"></i>
@@ -409,7 +497,13 @@ function Filter() {
                 <li
                   key={val.id}
                   className="list-group-item"
-                  onClick={() => setKeywordFunc(val)}
+                  onClick={() => {
+                    dispatch({
+                      type: "keyCastAdd",
+                      payload: { param: "keywords", data: val },
+                    });
+                    setSearchKeyword([]);
+                  }}
                 >
                   {val.name}
                 </li>
@@ -418,7 +512,16 @@ function Filter() {
           )}
         </div>
       </div>
-      <button type='button' className="apply_filter">Search</button>
+      <button
+        onClick={() => {
+          setSearchFlag((val) => !val);
+          setPage(1);
+        }}
+        type="button"
+        className="apply_filter"
+      >
+        Search
+      </button>
     </div>
   );
 }

@@ -9,7 +9,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Feed />} />
-        <Route path="/categorySearch/:param1/:param2/:heading/:filter" element={<CategorySearch />} />
+        <Route path="/categorySearch/:category/:heading/" element={<CategorySearch />} />
         <Route path="/peoples" element={<Peoples />} />
         <Route path="/:mediaId" element={<MediaInfo />} />
         <Route path="/genreMedia/:genre" element={<GenreMedia />} />

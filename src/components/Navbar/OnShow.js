@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDateSetter } from "../";
 function OnShow() {
   return (
     <ul className="nav">
@@ -12,16 +13,48 @@ function OnShow() {
           Movies
         </button>
         <ul className="dropdown-menu">
-          <Link className="dropdown-item nav-link" to={`/categorySearch/movie/popular/Popular Movies/${null}`}>
+          <Link
+            className="dropdown-item nav-link"
+            to={`/categorySearch/movie/Popular Movies/`}
+            state={{ paramsObj: { defaultSort: "popularity.desc" } }}
+          >
             Popular
           </Link>
-          <Link className="dropdown-item nav-link" to={`/categorySearch/movie/now_playing/Now Playing Movies/${null}`}>
+          <Link
+            className="dropdown-item nav-link"
+            to={`/categorySearch/movie/Now Playing Movies`}
+            state={{
+              paramsObj: {
+                defaultSort: "popularity.desc",
+                r_type: "2|3",
+                defaultInitialRelease: useDateSetter("before", 25),
+                defaultFinalRelease: useDateSetter("before", 0),
+              },
+            }}
+          >
             Now Playing
           </Link>
-          <Link className="dropdown-item nav-link" to={`/categorySearch/movie/top_rated/Top Rated Movies/${null}`}>
+          <Link
+            className="dropdown-item nav-link"
+            to={`/categorySearch/movie/Top Rated Movies/`}
+            state={{
+              paramsObj: {
+                defaultSort: "vote_average.desc",
+                defaultVotes: "200",
+              },
+            }}
+          >
             Top Rated
           </Link>
-          <Link className="dropdown-item nav-link" to={`/categorySearch/movie/upcoming/Upcoming Movies/${null}`}>
+          <Link
+            className="dropdown-item nav-link"
+            to={`/categorySearch/movie/Upcoming Movies/`}
+            state={{
+              paramsObj:{defaultSort: "popularity.desc",
+              r_type: "2|3",
+              defaultInitialRelease: useDateSetter("after", 5)}
+            }}
+          >
             Upcoming
           </Link>
         </ul>
@@ -35,23 +68,62 @@ function OnShow() {
           TV shows
         </button>
         <ul className="dropdown-menu">
-          <Link className="dropdown-item nav-link" to={`/categorySearch/tv/popular/Popular TV Shows/${null}`}>
+          <Link
+            className="dropdown-item nav-link"
+            to={`/categorySearch/tv/Popular TV Shows/`}
+            state={{
+              paramsObj:{
+                defaultSort:"popularity.desc",
+              }
+            }}
+          >
             Popular
           </Link>
-          <Link className="dropdown-item nav-link" to={`/categorySearch/tv/airing_today/TV Shows Airing Today/${null}`}>
+          <Link
+            className="dropdown-item nav-link"
+            to={`/categorySearch/tv/TV Shows Airing Today`}
+            state={{
+              paramsObj:{
+                defaultSort:"popularity.desc",
+                defaultInitialRelease: useDateSetter("after", 0),
+                defaultFinalRelease: useDateSetter("after", 0),
+              }
+            }}
+          >
             Airing Today
           </Link>
-          <Link className="dropdown-item nav-link" to={`/categorySearch/tv/top_rated/Top Rated TV Shows/${null}`}>
+          <Link
+            className="dropdown-item nav-link"
+            to={`/categorySearch/tv/Top Rated TV Shows`}
+            state={{
+              paramsObj: {
+                defaultSort: "vote_average.desc",
+                defaultVotes: "200",
+              },
+            }}
+          >
             Top Rated
           </Link>
-          <Link className="dropdown-item nav-link" to={`/categorySearch/tv/on_the_air/Currently Airing TV Shows/${null}`}>
+          <Link
+            className="dropdown-item nav-link"
+            to={`/categorySearch/tv/Currently Airing TV Shows`}
+            state={{
+              paramsObj:{
+                defaultSort:"popularity.desc",
+                defaultInitialRelease: useDateSetter("after", 0),
+                defaultFinalRelease: useDateSetter("after", 0),
+              }
+            }}
+          >
             On TV
           </Link>
         </ul>
       </li>
       <li className="nav-item">
         <button type="button" className="nav-link">
-          <Link to="/peoples" className='link'>Peoples</Link>
+          <Link to="/peoples" className="link">
+            Peoples
+          </Link>
         </button>
       </li>
     </ul>

@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import { Fetch, util, DisplayMedia, Genres, MediaTable, Trailer } from "./";
+import { Fetch, util, DisplayMedia, Genres, MediaTable, Trailer, useDateSetter } from "./";
 function WelcomeSection() {
   const [carouselItems, setCarouselItems] = useState([]);
   const [trendingTime, setTrendingTime] = useState("day");
@@ -8,57 +8,9 @@ function WelcomeSection() {
   const [ottPlatform, setOttPlatform] = useState("8");
   const [ottPopular, setOttPopular] = useState([]);
   const [upcomingMovieTrailers, setupcomingMovieTrailers] = useState([]);
-  const date = new Date()
+  const { config } = util();
   const upcomingReleaseDate = useRef();
-
-  useMemo(()=>{
-    const thirtyOneDaysMonths = [0,2,4,6,7,9,11];
-    const thirtyDaysMonths = [3,5,8,10];
-    let day = date.getDate() < 10 ? "0"+date.getDate() : null;
-    let month = date.getMonth() + 1;
-    month = month < 10 ? "0"+ month : null;
-    let year = date.getFullYear();
-    if(thirtyDaysMonths.includes(date.getMonth())){
-      if(day > 25){
-        day = "01";
-        month = Number(month) + 1;
-        month = month < 10 ? "0"+month: month;
-      }
-      else{
-        day = Number(day) + 5;
-        day = day < 10 ? "0"+day: day;
-      }
-    }else if(thirtyOneDaysMonths.includes(date.getMonth())){
-      if(month === "12" && day > 26){
-        year = Number(year) + 1; month = "01"; day = "01";
-      }
-      else if( day > 26 ){
-        day = "01";
-        month = Number(month) + 1;
-        month = month < 10 ? "0"+month: month;
-      }else{
-        day = Number(day) + 5;
-        day = day < 10 ? "0"+day: day;
-      }
-    }else{
-      if(year%4 === 0  || year%400 === 0){
-        if( day > 24 ){
-          day = "01";
-          month = Number(month) + 1;
-          month = month < 10 ? "0"+month: month;
-        }
-      }
-      else if( day > 23){
-        day = "01";
-        month = Number(month) + 1;
-        month = month < 10 ? "0"+month: month;
-      }else{
-        day = Number(day) + 5;
-        day = day < 10 ? "0"+day: day;
-      }
-    }
-    upcomingReleaseDate.current = year + "-" + month + "-" + day;
-  },[])
+  upcomingReleaseDate.current = useDateSetter("after", 5);
 
   useEffect(() => {
     Fetch(
@@ -104,7 +56,7 @@ function WelcomeSection() {
     });
   }, [ottPlatform]);
 
-  const { config } = util();
+
   return (
     <main className="welcome">
       <section

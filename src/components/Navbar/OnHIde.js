@@ -28,7 +28,7 @@ function OnHIde() {
               id="movies"
             >
               <li className="nav-item" data-bs-dismiss='offcanvas' role='button'>
-                <Link  className='nav-link' to={`/categorySearch/movie/popular/Popular Movies/${null}`}>Popular</Link>
+                <Link  className='nav-link' to={`/categorySearch/movie/{}/Popular Movies`}>Popular</Link>
               </li>
               <li data-bs-dismiss='offcanvas' role='button' className="nav-item">
                 <Link className='nav-link' to={`/categorySearch/movie/now_playing/Now Playing Movies/${null}`}>Now Playing</Link>
