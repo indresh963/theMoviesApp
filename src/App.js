@@ -2,7 +2,7 @@ import "./App.css";
 import "./ResponsiveApp.css";
 import { Fragment, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-import { CategorySearch, Feed, Peoples, MediaInfo, Navbar, SearchFeed } from "./components";
+import { CategorySearch, Feed, Peoples, MediaInfo, Navbar, SearchFeed, Person } from "./components";
 function App() {
 
   const location = useLocation();
@@ -23,6 +23,7 @@ function App() {
         <Route path="/peoples" element={<Peoples />} />
         <Route path="/:mediaId" element={<MediaInfo />} />
         <Route path="/searchFeed" element={<SearchFeed />} />
+        <Route path="/person" element={<Person />} />
       </Routes>
     </Fragment>
   );

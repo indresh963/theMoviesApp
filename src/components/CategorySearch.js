@@ -125,7 +125,6 @@ function CategorySearch() {
     dispatch({type:"routeChanged",payload:initialFilters})
   },[location])
 
-  console.log(filter);
   useEffect(() => {
     console.log("changed route")
     Fetch(

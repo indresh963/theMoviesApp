@@ -28,6 +28,10 @@
   .carousel-item {
     height: 370px;
   }
+
+  #recommended_img{
+    width:200px;
+  }
 }
 
 @media screen and (max-width: 576px) {
@@ -36,5 +40,20 @@
   }
   .carousel-item {
     height: 415px;
+  }
+
+  #carousel_inner_image,#carousel_inner_video{
+    max-width: 100vw;
+  }
+
+}
+
+@media screen and (max-width:470px){
+  .param{
+    font-size:small;
+  }
+
+  .media_name,.media_year{
+    font-size: large;
   }
 }

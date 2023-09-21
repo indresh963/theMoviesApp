@@ -31,12 +31,12 @@ function Trailer({ data, heading }) {
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
           transition: "background-image 700ms ease-in",
+          backgroundColor:"steelblue",
+          backgroundBlendMode:"multiply"
         }}
       >
         <div className="card-header">
-          <div className="d-flex align-items-center justify-content-between">
-            <Badge>{heading}</Badge>
-          </div>
+        <Badge>{heading}</Badge>
         </div>
         <div className="card-body d-flex gap-4 media_section">
           {data.map((val) => (

@@ -17,4 +17,5 @@ export { default as  SearchFeed} from './SearchFeed.js'
 export { default as  Pagination} from './Pagination.js'
 export { default as  Filter} from './Filter.js'
 export { default as  useDateSetter} from '../customHooks/useDateSetter.js'
+export { default as  Person} from './Person.js'
 
