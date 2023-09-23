@@ -13,6 +13,7 @@ function DisplayMedia({
   function setParam(e, func) {
     func(e.target.value);
   }
+
   return (
     <section className="my-4">
       <div className="card media">
@@ -42,7 +43,7 @@ function DisplayMedia({
         </div>
         <div className="card-body d-flex gap-4 media_section">
           {data.map((val) => (
-            <Link key={val.id} to={`/${val.id}`}>
+            <Link key={val.id} to={`/${val.id}`} state={{mediaType:val.media_type || "tv"}}>
               <div className="card flex-shrink-0 media-card-body">
                 <div className="card-body flex-grow-0">
                   <img

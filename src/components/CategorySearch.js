@@ -151,7 +151,7 @@ function CategorySearch() {
           <div className="card-body d-flex gap-3 gap-sm-4 justify-content-center flex-wrap">
             {
             dataList[0] ? (dataList.map((val) => (
-              <Link key={val.id} to={`/${val.id}`}>
+              <Link key={val.id} state={{mediaType:category}} to={`/${val.id}`}>
                 <div
                   className="card media-card-body"
                   style={{ maxWidth: "min-content" }}

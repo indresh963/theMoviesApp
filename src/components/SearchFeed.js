@@ -74,7 +74,7 @@ function SearchFeed() {
             <div className="card-body d-flex gap-3 gap-sm-4 gap-md-5 justify-content-center flex-wrap">
               {searchData[0] ? (
                 searchData.map((val) => (
-                  <Link key={val.id} to={`/${val.id}`}>
+                  <Link key={val.id} to={field === "person" ? "/person" : `/${val.id}`} state={field === "person" ? {personId:val.id} : {mediaType:field}}>
                     <div
                       className="card media-card-body"
                       style={{ maxWidth: "min-content" }}

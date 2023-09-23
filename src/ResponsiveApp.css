@@ -55,5 +55,6 @@
 
   .media_name,.media_year{
     font-size: large;
+    line-height: 1.7rem;
   }
 }

@@ -312,7 +312,7 @@ span.load-strip:nth-child(3) {
 }
 .media-card-body {
   border: unset;
-  flex-basis: min-content;
+  width:min-content;
 }
 
 .media-card-body .card-body {
@@ -845,7 +845,7 @@ input[type="date"] {
   font-size: xx-large;
   color: var(--over-primary);
   letter-spacing: 2.8px;
-  line-height: 2rem;
+  line-height: 2.5rem;
   text-transform: capitalize;
 }
 
@@ -876,6 +876,13 @@ ul.media_stats li::marker {
   font-size: medium;
   color: var(--over-primary);
   line-height: 1.3rem;
+}
+
+.para-imp{
+  line-height: 1.3rem;
+  font-weight:bold;
+  font-size: medium;
+  color:rgb(212, 207, 207);
 }
 
 #media_score {
@@ -991,3 +998,37 @@ ul.media_stats li::marker {
   width:300px;
 }
 /* media_page  */
+
+
+/* review section  */
+
+#author_name{
+  color:#000;
+  font-weight: bolder;
+  margin-bottom: 0;
+}
+
+#created_at{
+  color:#000;
+  font-size: small;
+  margin-bottom: 0;
+}
+
+#content{
+  color: #242121;
+}
+
+.view_btn{
+  background-color: transparent;
+  border:0;
+  font-size: smaller;
+  color:#0516ba
+
+}
+
+#avatar{
+  width: 50px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+}
+/* review section  */

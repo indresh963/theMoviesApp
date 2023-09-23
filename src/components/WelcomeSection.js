@@ -116,6 +116,7 @@ function WelcomeSection() {
                       <Link
                         to={`/${val.id}`}
                         className="main-btn d-inline-block"
+                        state={{mediaType:"movie"}}
                       >
                         <i className="fa-solid fa-circle-info me-2 align-baseline"></i>
                         See Details

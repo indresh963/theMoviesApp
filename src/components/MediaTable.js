@@ -21,7 +21,7 @@ function MediaTable({param,title,paramsObj}) {
           {
             listContent.map( val => (
               <li key={val.id}>
-                <Link to={`${val.id}`} className="d-flex gap-4">
+                <Link to={`${val.id}`} state={{mediaType:"tv"}} className="d-flex gap-4">
                 <img src={`${config}/w92/${val.poster_path}`} alt='list_img' />
                 <div>
                   <h5>{val?.name ?? val?.original_name}</h5>
