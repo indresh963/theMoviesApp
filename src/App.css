@@ -880,9 +880,8 @@ ul.media_stats li::marker {
 
 .para-imp{
   line-height: 1.3rem;
-  font-weight:bold;
   font-size: medium;
-  color:rgb(212, 207, 207);
+  color:rgb(235, 231, 231);
 }
 
 #media_score {
@@ -1026,9 +1025,49 @@ ul.media_stats li::marker {
 
 }
 
+.view_btn:focus{
+  outline:0;
+}
+
 #avatar{
   width: 50px;
   aspect-ratio: 1/1;
   border-radius: 50%;
 }
 /* review section  */
+
+/* perosn page  */
+
+#person{
+  border-radius: var(--br-base);
+}
+
+.person_sub_heading{
+  font-size: medium;
+}
+
+.person_para{
+  font-size:0.87rem;
+  line-height: 1.3rem;
+}
+
+#bio{
+  display:inline;
+  font-size: 1rem;
+  white-space: pre-line;
+}
+
+#person_media{
+  width:60px;
+}
+
+.rating{
+  color:var(--primary);
+  font-size: small;
+}
+
+h4.person_media_release_date{
+  margin-top: 7px;
+  font-size: smaller;
+}
+/* perosn page  */

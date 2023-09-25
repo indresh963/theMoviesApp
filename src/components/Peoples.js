@@ -14,7 +14,6 @@ function Peoples() {
       "GET",
       `language=en-US`
     ).then((response) => {
-      console.log(response);
       setPeoplesList(response.results);
       totalPages.current = response.total_pages;
     });
@@ -32,7 +31,7 @@ function Peoples() {
         <div className="col-11">
           <div className="card-body d-flex gap-3 gap-sm-4 gap-md-5 justify-content-center flex-wrap">
             {peoplesList.map((val) => (
-              <Link key={val.id} to={`/${val.id}`}>
+              <Link key={val.id} to="/person" state={{personId:val.id}}>
                 <div
                   className="card media-card-body"
                   style={{ maxWidth: "min-content" }}

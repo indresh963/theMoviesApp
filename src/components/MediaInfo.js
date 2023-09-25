@@ -33,6 +33,7 @@ function MediaInfo() {
         mediaType === "movie" ? "credits" : "aggregate_credits"
       }`
     ).then((response) => {
+      console.log(response)
       setMediaData(response);
       if (mediaType === "movie") {
         setMediaCast(response.credits.cast);
@@ -105,7 +106,7 @@ function MediaInfo() {
                 <h1 className="media_year">
                   &#40;
                   {mediaData.release_date?.split("-")[0] ??
-                    mediaData.last_air_date?.split("-")[0]}
+                    mediaData.first_air_date?.split("-")[0]}
                   &#41;{" "}
                 </h1>
               </div>
@@ -129,12 +130,11 @@ function MediaInfo() {
                 <li className="para">Eps: {mediaData.number_of_episodes}</li>
                 {mediaData.episode_run_time?.[0] && (
                   <li className="para">
-                    Runtime: {parseInt(mediaData.episode_run_time[0] / 60)}h{" "}
-                    {mediaData.episode_run_time[0] % 60}m
+                    Runtime:{mediaData.episode_run_time[0]}m
                   </li>
                 )}
               </ul>}
-              <div className="para-imp">Status: {mediaData.status}</div>
+              <div className="para-imp mb-2">Status: {mediaData.status}</div>
               <ul className="media_activity">
                 <li>
                   <span id="media_score">
@@ -208,7 +208,7 @@ function MediaInfo() {
         <Badge>Cast</Badge>
         <div className="card-body d-flex gap-4 mt-4 pb-3 media_section">
           {mediaCast.slice(0, 15)?.map((val) => (
-            <Link key={val.id} to="/person" state={{ key: val.id }}>
+            <Link key={val.id} to="/person" state={{ personId: val.id }}>
               <div className="card flex-shrink-0 media-card-body">
                 <div className="card-body flex-grow-0" id="person_img">
                   <img
@@ -217,9 +217,7 @@ function MediaInfo() {
                         ? `${config}/w154/${
                             val.poster_path ?? val.profile_path
                           }`
-                        : require(window.innerWidth > 768
-                            ? "../assets/placeholder2.jpg"
-                            : "../assets/placeholder4.jpg")
+                        : require("../assets/placeholder2.jpg")
                     }
                     alt="slide_for_trending"
                     className="media-img shadow-sm img-fluid"
@@ -316,7 +314,7 @@ function MediaInfo() {
                 ))}
               </div>
             ) : (
-              <h2>No videos available for this movie</h2>
+              <h2>No videos available for this {mediaType}</h2>
             )}
           </div>
         ) : (
