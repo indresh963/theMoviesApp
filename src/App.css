@@ -1125,7 +1125,7 @@ footer h2{
   text-align: end;
   display: flex;
   flex-direction: column;
-  align-items: end;
+  align-items: flex-end;
   animation: container 3000ms ease-in;
 }
 
