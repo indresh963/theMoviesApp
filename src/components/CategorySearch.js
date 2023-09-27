@@ -57,10 +57,14 @@ const reducer = (state, { type, payload }) => {
       return localState;
     case "removeData":
       if (payload.param === "keywords") {
-        return { ...state, keywords: state.keywords.splice(payload.ind, 1) };
+        let keywordArr = [...state.keywords];
+        keywordArr.splice(payload.ind,1);
+        return { ...state, keywords: keywordArr };
       }
       if (payload.param === "cast") {
-        return { ...state, cast: state.cast.splice(payload.ind, 1) };
+        let castArr = [...state.cast];
+        castArr.splice(payload.ind,1);
+        return { ...state, cast: castArr };
       }
       break;
     case "release_region":

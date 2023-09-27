@@ -183,7 +183,14 @@ function Filter({
         >
           Filters
         </button>
-        <div className="options border-top show collapse p-3" id="filter">
+        <div
+          className={
+            window.innerWidth > 768
+              ? "options border-top collapse p-3 show"
+              : "options border-top collapse p-3"
+          }
+          id="filter"
+        >
           <div className="mb-4">
             <label htmlFor="countries">Language</label>
             <select

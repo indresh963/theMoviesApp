@@ -55,6 +55,10 @@
   #carousel_inner_video {
     max-width: 100vw;
   }
+
+  #bubble{
+    width: 85vw;
+  }
 }
 
 @media screen and (max-width: 470px) {
@@ -66,5 +70,9 @@
   .media_year {
     font-size: large;
     line-height: 1.7rem;
+  }
+
+  #bubble{
+    width: 95vw;
   }
 }

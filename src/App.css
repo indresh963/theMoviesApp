@@ -1,5 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
 
+body{
+  height: 100vh;
+}
+
+#root{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -1070,4 +1080,122 @@ h4.person_media_release_date{
   margin-top: 7px;
   font-size: smaller;
 }
+
+footer{
+  background-color: var(--primary);
+  margin-top: auto;
+}
+
+footer h3{
+  color: var(--over-primary);
+  font-weight: normal;
+}
+
+footer h2{
+  color: var(--over-primary);
+  font-size: large;
+}
+
+#tmdb_logo{
+  max-width: 50px;
+}
 /* perosn page  */
+
+/* first Page  */
+#first_page{
+  overflow: hidden;
+  height: 100vh;
+}
+#bubble{
+  width: 70vw;
+  height: 150vh;
+  border-radius: 100%;
+  background-color: var(--primary);
+  position: relative;
+  top:-30%;
+  left:-20%;
+  animation:bubble 1500ms ease-in-out;
+}
+
+#logo_container{
+  position: absolute;
+  top:50%;
+  right:5%;
+  transform: translateY(-50%);
+  text-align: end;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  animation: container 3000ms ease-in;
+}
+
+.applogo{
+  width: 25vw;
+}
+
+#txt_1,#txt_2{
+  color: var(--over-primary);
+  line-height:0.7rem;
+}
+
+#txt_2{
+  font-size: x-small;
+  font-weight: normal;
+}
+
+.front_logo{
+  width:3rem;
+}
+
+#content{
+  padding: 1rem 2rem 1rem 0;
+  display: inline-block;
+  position: relative;
+  flex-shrink: 2;
+}
+
+#show_prjct{
+  border:1px solid var(--over-primary);
+  background-color: transparent;
+  border-radius: var(--br-sm);
+  color: var(--over-primary);
+  font-size: medium;
+  padding: 0.2rem 0.7rem;
+  margin-top: 0.9rem;
+}
+
+#credits{
+  margin-top: 1rem;
+  width: 200px;
+  color: slategrey;
+  font-size: x-small;
+  margin-right: 0.7rem;
+}
+
+@keyframes bubble {
+  from{
+    scale: 0;
+  }
+  to{
+    scale: 1;
+  }
+}
+
+@keyframes container {
+  0%{
+    scale:0;
+  }
+
+  50%{
+    right:100%;
+    scale:0;
+  }
+
+  100%{
+    right:5%;
+    scale:1;
+  }
+
+}
+
+/* first Page  */

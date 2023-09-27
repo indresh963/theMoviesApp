@@ -10,7 +10,7 @@ function SearchFeed() {
   const { config } = util();
 
   useEffect(() => {
-    Fetch(
+    query && Fetch(
       `search/${field}`,
       `${page}`,
       "GET",

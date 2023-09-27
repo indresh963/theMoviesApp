@@ -6,7 +6,7 @@ const FetchFromAPI = async (query,page,method,params) => {
     url: `https://api.themoviedb.org/3/${query}?page=${page}&${params}`,
     headers: {
       accept: "application/json",
-      Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0ZTU0NmUyNzQ5NjYyYTEzNjI2ZTY1ODU1YmFjZGNmMSIsInN1YiI6IjY0ZDcxNTgzMDAxYmJkMDExZDkwMjNjYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.R3N7hANJDN3POKUbqdu2ge3vhAhppMA5wM4dJ5AH2Kc"
+      Authorization:process.env.REACT_APP_ACCESS_TOKEN,
     },
   };
   const { data } = await axios.request(options);
