@@ -130,7 +130,6 @@ function CategorySearch() {
   },[location])
 
   useEffect(() => {
-    console.log("changed route")
     Fetch(
       `discover/${category}`,
       `${page}`,

@@ -33,7 +33,6 @@ function MediaInfo() {
         mediaType === "movie" ? "credits" : "aggregate_credits"
       }`
     ).then((response) => {
-      console.log(response)
       setMediaData(response);
       if (mediaType === "movie") {
         setMediaCast(response.credits.cast);
