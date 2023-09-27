@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/theMoviesApp/static/css/main.368cf0ff.css",
+    "main.js": "/theMoviesApp/static/js/main.49eb4a73.js",
+    "static/js/787.5d5ea81f.chunk.js": "/theMoviesApp/static/js/787.5d5ea81f.chunk.js",
+    "static/media/pngegg.png": "/theMoviesApp/static/media/pngegg.7b0c821d41499b85e6a8.png",
+    "static/media/thriller.png": "/theMoviesApp/static/media/thriller.d15715868ae7d044d8c9.png",
+    "static/media/anime.png": "/theMoviesApp/static/media/anime.659f52b2ca1b17d73829.png",
+    "static/media/family.png": "/theMoviesApp/static/media/family.bb0cdb139a821cc8147c.png",
+    "static/media/horror.png": "/theMoviesApp/static/media/horror.41bf8b0dcf491f4d100f.png",
+    "static/media/war.png": "/theMoviesApp/static/media/war.1147511d9d7fbafd19da.png",
+    "static/media/fantasy.png": "/theMoviesApp/static/media/fantasy.6d64f24b3b0821013cca.png",
+    "static/media/drama.png": "/theMoviesApp/static/media/drama.77e93346e1cdc9f790b5.png",
+    "static/media/adventure.png": "/theMoviesApp/static/media/adventure.1b3e50ebc44597ceffda.png",
+    "static/media/music.png": "/theMoviesApp/static/media/music.5344ab98f10dc77c4c2f.png",
+    "static/media/sci-fi.png": "/theMoviesApp/static/media/sci-fi.f8dd0271063c277b9751.png",
+    "static/media/action.png": "/theMoviesApp/static/media/action.f705a72845b28d9b375b.png",
+    "static/media/tmdbLogo.png": "/theMoviesApp/static/media/tmdbLogo.88319df7fbff6d296d54.png",
+    "static/media/crime.png": "/theMoviesApp/static/media/crime.4c698a2db0d6dc3c2996.png",
+    "static/media/mystery.png": "/theMoviesApp/static/media/mystery.4f6bc0c9aa3b352e62f8.png",
+    "static/media/history.png": "/theMoviesApp/static/media/history.0d82e9f3cf1e5b47219d.png",
+    "static/media/romance.png": "/theMoviesApp/static/media/romance.1a20529e1bf38c8d353f.png",
+    "static/media/comedy.png": "/theMoviesApp/static/media/comedy.a4bf4e11d16abc5700a3.png",
+    "static/media/placeholder.jpg": "/theMoviesApp/static/media/placeholder.19346f671cfc05e6efec.jpg",
+    "static/media/placeholder2.jpg": "/theMoviesApp/static/media/placeholder2.0c336eee6ebac84e07ec.jpg",
+    "static/media/placeholder_landscape.jpg": "/theMoviesApp/static/media/placeholder_landscape.8bc633b3bc22cf235608.jpg",
+    "static/media/placeholder4.jpg": "/theMoviesApp/static/media/placeholder4.7273c37f739510d1b31d.jpg",
+    "static/media/big_placeholder.png": "/theMoviesApp/static/media/big_placeholder.8b48f44269e82fc601a1.png",
+    "index.html": "/theMoviesApp/index.html",
+    "main.368cf0ff.css.map": "/theMoviesApp/static/css/main.368cf0ff.css.map",
+    "main.49eb4a73.js.map": "/theMoviesApp/static/js/main.49eb4a73.js.map",
+    "787.5d5ea81f.chunk.js.map": "/theMoviesApp/static/js/787.5d5ea81f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.368cf0ff.css",
+    "static/js/main.49eb4a73.js"
+  ]
+}
