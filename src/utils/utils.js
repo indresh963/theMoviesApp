@@ -82,7 +82,7 @@ export default function utils() {
     },
   ];
 
-  const config = "http://image.tmdb.org/t/p/";
+  const config = "https://image.tmdb.org/t/p/";
 
   function Badge({ children }) {
     return (

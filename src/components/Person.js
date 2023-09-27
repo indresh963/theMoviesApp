@@ -250,7 +250,7 @@ function Person() {
                           <h3>{val.original_title ?? val.title ?? val.name ?? val.original_name}</h3>
                           <h4><b>character:</b>{val.character}</h4>
                           <h4 className="person_media_release_date">{val.release_date ?? val.first_air_date}</h4>
-                          <div><i className="fa-solid fa-star me-1 shadow" style={{color:"yellow"}}></i><span className="rating">{val.vote_average}</span></div>
+                          <div><i className="fa-solid fa-star me-1 shadow" style={{color:"rgb(255, 193, 22)"}}></i><span className="rating">{val.vote_average}</span></div>
                         </div>
                       </div>
                     </Link>
