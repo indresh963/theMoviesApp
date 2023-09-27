@@ -61,8 +61,8 @@ function WelcomeSection() {
     <main className="welcome">
       <section
         id="ongoing"
-        className="carousel slide carousel-fade"
         data-bs-ride="carousel"
+        className="carousel slide carousel-fade"
       >
         <div className="carousel-indicators">
           {carouselItems.map(
