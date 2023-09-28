@@ -61,8 +61,8 @@ function WelcomeSection() {
     <main className="welcome">
       <section
         id="ongoing"
-        data-bs-ride="carousel"
         className="carousel slide carousel-fade"
+        data-bs-ride='carousel'
       >
         <div className="carousel-indicators">
           {carouselItems.map(
@@ -89,7 +89,7 @@ function WelcomeSection() {
                       ? " carousel-item active d-flex flex-column justify-content-end"
                       : "carousel-item d-flex flex-column justify-content-end"
                   }
-                  data-bs-interval="4000"
+                  data-bs-interval={2000}
                   style={{
                     backgroundImage: `url(${config}/original/${val.backdrop_path})`,
                     backgroundSize: "cover",

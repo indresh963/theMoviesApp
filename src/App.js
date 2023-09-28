@@ -26,7 +26,7 @@ function App() {
     });
   }, [location]);
 
-  return viewProject ? (
+  return (
     <Fragment>
       <Navbar />
       <Routes>
@@ -42,8 +42,6 @@ function App() {
       </Routes>
       <Footer />
     </Fragment>
-  ) : (
-    <FirstPage setViewProject={setViewProject} />
   );
 }
 

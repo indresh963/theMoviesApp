@@ -325,7 +325,7 @@ function MediaInfo() {
               <div className="carousel-inner" id="carousel_inner_image">
                 {mediaImages.map((val, ind) => (
                   <div
-                    key={ind}
+                    key={val.file_path}
                     className={
                       ind === 0 ? "carousel-item active" : "carousel-item"
                     }
