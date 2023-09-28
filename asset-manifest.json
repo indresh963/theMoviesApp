@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/theMoviesApp/static/css/main.28911955.css",
-    "main.js": "/theMoviesApp/static/js/main.78953725.js",
+    "main.css": "/theMoviesApp/static/css/main.bd315d90.css",
+    "main.js": "/theMoviesApp/static/js/main.c543036e.js",
     "static/js/787.5d5ea81f.chunk.js": "/theMoviesApp/static/js/787.5d5ea81f.chunk.js",
     "static/media/pngegg.png": "/theMoviesApp/static/media/pngegg.7b0c821d41499b85e6a8.png",
     "static/media/thriller.png": "/theMoviesApp/static/media/thriller.d15715868ae7d044d8c9.png",
@@ -27,12 +27,12 @@
     "static/media/placeholder4.jpg": "/theMoviesApp/static/media/placeholder4.7273c37f739510d1b31d.jpg",
     "static/media/big_placeholder.png": "/theMoviesApp/static/media/big_placeholder.8b48f44269e82fc601a1.png",
     "index.html": "/theMoviesApp/index.html",
-    "main.28911955.css.map": "/theMoviesApp/static/css/main.28911955.css.map",
-    "main.78953725.js.map": "/theMoviesApp/static/js/main.78953725.js.map",
+    "main.bd315d90.css.map": "/theMoviesApp/static/css/main.bd315d90.css.map",
+    "main.c543036e.js.map": "/theMoviesApp/static/js/main.c543036e.js.map",
     "787.5d5ea81f.chunk.js.map": "/theMoviesApp/static/js/787.5d5ea81f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.28911955.css",
-    "static/js/main.78953725.js"
+    "static/css/main.bd315d90.css",
+    "static/js/main.c543036e.js"
   ]
 }
