@@ -301,6 +301,23 @@ span.load-strip:nth-child(3) {
   font-size: var(--font-sm);
 }
 
+#banner_carousel_controls .carousel-control-prev,
+#banner_carousel_controls .carousel-control-next{
+  position: initial;
+  padding:4px;
+  border-radius: var(--br-sm);
+  border:1px solid;
+  width: 2rem;
+}
+
+#banner_carousel_controls{
+  display: flex;
+  position: absolute;
+  top:85%;
+  right:5%;
+  gap:0.7rem;
+}
+
 /* carousel  */
 
 /* media section  */

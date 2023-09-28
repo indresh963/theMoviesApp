@@ -1,6 +1,14 @@
 import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import { Fetch, util, DisplayMedia, Genres, MediaTable, Trailer, useDateSetter } from "./";
+import {
+  Fetch,
+  util,
+  DisplayMedia,
+  Genres,
+  MediaTable,
+  Trailer,
+  useDateSetter,
+} from "./";
 function WelcomeSection() {
   const [carouselItems, setCarouselItems] = useState([]);
   const [trendingTime, setTrendingTime] = useState("day");
@@ -29,9 +37,10 @@ function WelcomeSection() {
       "GET",
       `include_adult=false&include_video=true&language=en-US&page=1&primary_release_date.gte=${upcomingReleaseDate.current}&sort_by=popularity.desc`
     ).then(({ results }) => {
-      setupcomingMovieTrailers(results.filter(val=>val.backdrop_path !== null));
+      setupcomingMovieTrailers(
+        results.filter((val) => val.backdrop_path !== null)
+      );
     });
-
   }, []);
 
   useEffect(() => {
@@ -56,13 +65,12 @@ function WelcomeSection() {
     });
   }, [ottPlatform]);
 
-
   return (
     <main className="welcome">
       <section
         id="ongoing"
         className="carousel slide carousel-fade"
-        data-bs-ride='carousel'
+        data-bs-ride="true"
       >
         <div className="carousel-indicators">
           {carouselItems.map(
@@ -89,7 +97,7 @@ function WelcomeSection() {
                       ? " carousel-item active d-flex flex-column justify-content-end"
                       : "carousel-item d-flex flex-column justify-content-end"
                   }
-                  data-bs-interval={2000}
+                  data-bs-interval={4000}
                   style={{
                     backgroundImage: `url(${config}/original/${val.backdrop_path})`,
                     backgroundSize: "cover",
@@ -116,7 +124,7 @@ function WelcomeSection() {
                       <Link
                         to={`/${val.id}`}
                         className="main-btn d-inline-block"
-                        state={{mediaType:"movie"}}
+                        state={{ mediaType: "movie" }}
                       >
                         <i className="fa-solid fa-circle-info me-2 align-baseline"></i>
                         See Details
@@ -127,7 +135,26 @@ function WelcomeSection() {
               )
           )}
         </div>
+        <div id="banner_carousel_controls">
+          <button
+            type="button"
+            className="carousel-control-prev"
+            data-bs-slide="prev"
+            data-bs-target="#ongoing"
+          >
+            <span className="carousel-control-prev-icon"></span>
+          </button>
+          <button
+            type="button"
+            className="carousel-control-next"
+            data-bs-slide="next"
+            data-bs-target="#ongoing"
+          >
+            <span className="carousel-control-next-icon"></span>
+          </button>
+        </div>
       </section>
+
       <DisplayMedia
         data={trendingContent}
         heading="Trending"
@@ -147,10 +174,10 @@ function WelcomeSection() {
               "language=en-US&sort_by=popularity.desc&with_genres=16&with_original_language=ja&vote_count.gte=200"
             }
             paramsObj={{
-              defaultSort:"popularity.desc",
-              defaultGenre:[16],
-              defaultOriginLanguage:"ja",
-              defaultVotes:200,
+              defaultSort: "popularity.desc",
+              defaultGenre: [16],
+              defaultOriginLanguage: "ja",
+              defaultVotes: 200,
             }}
             title="Anime"
           />
@@ -158,40 +185,32 @@ function WelcomeSection() {
             param={
               "language=en-US&sort_by=popularity.desc&with_original_language=ko&vote_count.gte=100"
             }
-
             paramsObj={{
-              defaultSort:"popularity.desc",
-              defaultOriginLanguage:'ko',
-              defaultVotes:100,
+              defaultSort: "popularity.desc",
+              defaultOriginLanguage: "ko",
+              defaultVotes: 100,
             }}
-
             title="K-Drama"
           />
           <MediaTable
-            param={
-              `language=en-US&sort_by=popularity.&with_original_language=en&with_watch_providers=8, 119, 122, 121, 232, 350, 237&vote_average.gte=8&vote_count.gte=200`
-            }
-
+            param={`language=en-US&sort_by=popularity.&with_original_language=en&with_watch_providers=8, 119, 122, 121, 232, 350, 237&vote_average.gte=8&vote_count.gte=200`}
             paramsObj={{
-              defaultSort:"popularity.desc",
-              defaultLowerScore:8,
-              defaultVotes:200,
-              defaultWatchProviders:[8, 119, 122, 121, 232, 350, 237],
-              defaultOriginLanguage:"en"
+              defaultSort: "popularity.desc",
+              defaultLowerScore: 8,
+              defaultVotes: 200,
+              defaultWatchProviders: [8, 119, 122, 121, 232, 350, 237],
+              defaultOriginLanguage: "en",
             }}
-
             title="Web Series"
           />
           <MediaTable
             param={
               "language=en-US&sort_by=popularity.desc&with_original_language=hi"
             }
-
             paramsObj={{
-              defaultSort:"popularity.desc",
-              defaultOriginLanguage:"hi",
+              defaultSort: "popularity.desc",
+              defaultOriginLanguage: "hi",
             }}
-
             title="Hindi Shows"
           />
         </div>
@@ -209,10 +228,7 @@ function WelcomeSection() {
         currentFilter={ottPlatform}
       />
 
-      <Trailer
-        data={upcomingMovieTrailers}
-        heading="Upcoming Movies Trailer"
-      />
+      <Trailer data={upcomingMovieTrailers} heading="Upcoming Movies Trailer" />
     </main>
   );
 }
